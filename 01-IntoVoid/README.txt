@@ -19,7 +19,7 @@ Command 2 - make hello
 
 Files: hello.cpp
 
-Slides: 53-55, 59
+Slides: 53-56, 59
 
 This file shows an example of a classic C++ Hello, World program
 

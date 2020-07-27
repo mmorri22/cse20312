@@ -5,7 +5,7 @@
 * 
 * This is the classic Hello, World program 
 *
-* Lecture 01 - 53-56, 59
+* Lecture 01 - Part 2 - Slides 27-29
 **********************************************/
 
 #include <iostream> /* std::cout, std::endl */
