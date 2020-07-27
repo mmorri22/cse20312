@@ -1,7 +1,7 @@
 # Author: Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 02 - Part 1
+# This is the Makefile for Lecture 02
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -10,6 +10,16 @@ PP := g++
 FLAGS := -O0 -g -Wall
 CXXFLAGS := -m64 -std=c++11 $(FLAGS)
 
+# C++ intPtr Example
+# Command: make intPtr
+intPtrObjs :=  intPtr.o
+
+intPtr: intPtr.o
+	$(PP) $(CXXFLAGS) -o intPtr $(intPtrObjs)
+	./intPtr
+
+intPtr.o: intPtr.cpp
+	$(PP) $(CXXFLAGS) -c intPtr.cpp
 
 
 # C++ Hello, World Example

@@ -7,7 +7,7 @@
 * programming of char* and << operator for the
 * entire array
 *
-* Lecture 02 - Part 1 - Slide 32
+* Lecture 02 - Slide 42
 **********************************************/
 
 #include <iostream>

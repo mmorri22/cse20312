@@ -7,7 +7,7 @@
 * allocate a void point and memory, set the first two
 * bytes equal to characters, and then print their 
 *
-* Lecture 02 - Part 1 - Slides 21-23
+* Lecture 02 - Slides 30-32
 **********************************************/
 
 #include <iostream>

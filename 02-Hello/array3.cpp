@@ -8,7 +8,7 @@
 * bytes equal to characters, and then print their address
 * and values
 *
-* Lecture 02 - Part 1 - Slide 25
+* Lecture 02 - - Slide 35
 **********************************************/
 
 #include <iostream>

@@ -22,12 +22,3 @@ Files: hello.cpp
 Slides: 53-56, 59
 
 This file shows an example of a classic C++ Hello, World program
-
--------------------------------------------------
-Command 3 - make intPtr
-
-Files: int.cpp
-
-Slides: 61-66
-
-A fundamental example of a pointer. Students will understand the three main properties of a pointer.

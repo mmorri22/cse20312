@@ -1,16 +1,24 @@
-These code segments follow the order of Lecture 02 - Part 1 for CSE 24312
+These code segments follow the order of Lecture 02 for CSE 20312
 
-Follow the order of the slide set found at https://sites.google.com/a/nd.edu/morrison/courses/cse24312/lecture-notes/
+Follow the order of the slide set found at https://sites.google.com/a/nd.edu/morrison/courses/cse20312/lecture-notes/
 
 The order of compilation and files to understand the design is as follows:
 
+-------------------------------------------------
+Command 1 - make intPtr
+
+Files: intPtr.cpp
+
+Slides: 9-12
+
+A fundamental example of a pointer. Students will understand the three main properties of a pointer.
 
 -------------------------------------------------
-Command 1 - make void1
+Command 2 - make void1
 
 Files: void1.cpp
 
-Slides: 10, 17
+Slides: 19, 21
 
 Shows how to allocate a void pointer and memory on the heap, and print the address of the base address on the heap.
 
@@ -19,7 +27,7 @@ Command 2 - make char1
 
 Files: char1.cpp
 
-Slides: 11-12, 17
+Slides: 21-22
 
 Shows how to allocate a char pointer and memory on the heap, and print the address of the base address on the heap.
 
@@ -28,7 +36,7 @@ Command 3 - make array1
 
 Files: array1.cpp
 
-Slides: 16, 17
+Slides: 26
 
 Shows how to allocate a char pointer and memory on the heap, and print the address of the base address on the heap.
 
@@ -37,7 +45,7 @@ Command 4 - make void2
 
 Files: void2.cpp
 
-Slides: 18-19
+Slides: 27-28
 
 Modified void1.cpp by showing how to iterate through the allocated memory and print all the locations by size of a character
 
@@ -46,7 +54,7 @@ Command 5 - make char2
 
 Files: char2.cpp
 
-Slides: 20
+Slides: 29
 
 Modified char1.cpp by showing how to iterate through the allocated memory and print all the locations by size of a character
 
@@ -55,7 +63,7 @@ Command 6 - make array2
 
 Files: array2.cpp
 
-Slides: 20
+Slides: 29
 
 Modified array1.cpp by showing how to iterate through the allocated memory and print all the locations by size of a character
 

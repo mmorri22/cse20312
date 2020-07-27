@@ -6,7 +6,7 @@
 * An example of "Hello, World" with procedural
 * programming, char array, and array[] operators
 *
-* Lecture 02 - Part 1 - Slide 31
+* Lecture 02 - Slide 41
 **********************************************/
 
 #include <iostream>

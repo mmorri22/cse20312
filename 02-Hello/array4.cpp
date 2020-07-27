@@ -7,7 +7,7 @@
 * allocate a char array, sets all the characters
 * to Hello, World, and then prints their addresses and values
 *
-* Lecture 02 - Part 1 - Slide 28
+* Lecture 02 - Slide 38
 **********************************************/
 
 #include <iostream>
