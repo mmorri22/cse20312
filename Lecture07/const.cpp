@@ -5,8 +5,6 @@
 * 
 * This file contains examples of outputting  
 * pointers in C++
-*
-* Lecture 03 - Slides 29-30
 **********************************************/
 
 #include <iostream> /*C++ version of stdio.h*/

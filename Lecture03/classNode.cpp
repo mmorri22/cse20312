@@ -8,7 +8,7 @@
 * a lower level of abstraction. This code has data hiding
 * and object oriented programming
 *
-* Lecture 02 - Part 2 - Slide 33
+* Lecture 03 - Slide 22
 **********************************************/
 
 #include <iostream>

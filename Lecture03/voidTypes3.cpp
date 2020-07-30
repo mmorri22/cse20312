@@ -6,7 +6,7 @@
 * Example of allocating different types using the
 * same void pointer
 *
-* Lecture 02 - Part 2 - Slide 29
+* Lecture 3 - Slide 10
 **********************************************/
 
 #include <iostream>

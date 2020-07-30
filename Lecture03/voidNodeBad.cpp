@@ -14,7 +14,7 @@
 * the screen even though the data is structured 
 * correctly on the heap.
 *
-* Lecture 02 - Part 2 - Slides 20-21
+* Lecture 3 - Slides 10
 **********************************************/
 
 #include <iostream>

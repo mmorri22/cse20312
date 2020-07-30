@@ -1,16 +1,18 @@
 /**********************************************
-* File: voidNode.cpp
+* File: voidNodeBad2.cpp
 * Author: Matthew Morrison
 * Email: matt.morrison@nd.edu
 * 
-* Example of allocating different types using the
-* same void pointer. We store and print 
-* a double and a float and an int
+* Example of allocating multiple version of data 
+* with different types of elements
 *
 * Shows void pointers as "Pass by reference"
-* and modularity
 *
-* Lecture 3 - Slide 9
+* This code will run correctly. However, the setNodeValues 
+* is out of order, which makes the pointer arithmetic 
+* more complex, reducing the efficiency of the code 
+*
+* Lecture 02 - Part 2 - Slide 21
 **********************************************/
 
 #include <iostream>
@@ -21,16 +23,19 @@
 
 void setNodeValues( void* reference, double theDbl, float theFlt, int theInt ){
 	
-	// Put a double in the first 64 bits after reference
-	*((double *)(reference)) = theDbl;
-	
-	// Move past 64 bits and put in a float 
+	// Skip to the int first 
 	reference += sizeof(double);
-	*((float *)(reference)) = theFlt;
-	
-	// Move past 32 bits and put in an integer
 	reference += sizeof(float);
 	*((int *)(reference)) = theInt;	
+	
+	// Skip back to the double 
+	reference -= sizeof(float);
+	reference -= sizeof(double);
+	*((double *)(reference)) = theDbl;
+	
+	// Move past 32 bits and put in an integer
+	reference += sizeof(double);
+	*((float *)(reference)) = theFlt;
 	
 }
 

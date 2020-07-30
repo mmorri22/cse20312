@@ -1,5 +1,5 @@
 /**********************************************
-* File: classNode.cpp
+* File: classBad.cpp
 * Author: Matthew Morrison
 * Email: matt.morrison@nd.edu
 * 
@@ -16,7 +16,7 @@
 * Running command "make classBadPQC" will use PQC rules.
 * It will not compile, and force more complex errors.
 *
-* Lecture 02 - Part 2 - Slide 29
+* Lecture 03 - Slide 27-28
 **********************************************/
 
 #include <iostream>

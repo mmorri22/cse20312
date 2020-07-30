@@ -1,18 +1,17 @@
 /**********************************************
-* File: structSimple.cpp
+* File: structNode.cpp
 * Author: Matthew Morrison
 * Email: matt.morrison@nd.edu
 * 
 * Taking the code from voidFunc and putting it into
 * a C++ struct. voidFunc is the same code, but at 
 * a lower level of abstraction. This level is closer
-* to object-oriented programming, but does not 
-* implement any data hiding.
+* to object-oriented programming.
 *
-* Also, shows how the reference pointer can be 
-* abstracted away as "this
+* Shows how the public nature of structs allows for 
+* ease of modification of the struct members
 *
-* Lecture 03 - Slides 16-19
+* Lecture 02 - Part 2 - Slide 29
 **********************************************/
 
 #include <iostream>
@@ -23,24 +22,22 @@
 
 struct Node{
 	
-	/* Struct Members */
 	double theDbl;
 	float theFloat;
 	int theInt;
 	
-	/* Constructor */
 	Node(double dblIn, float floatIn, int intIn ) 
 		: theDbl( dblIn ), theFloat( floatIn ), theInt( intIn ) {}
 		
-	/* Struct methods */
+		
 	void printNodeValues(){
 		
 		COUT << "-----------------------------" << ENDL;
-		COUT << "Initial address of 'this': " << this << ENDL << ENDL;	
-
-		COUT << "Double:  " << this->theDbl << "\t at address " << &(this->theDbl) << ENDL;
-		COUT << "Float:  " << this->theFloat << "\t at address " << &(this->theFloat) << ENDL;
-		COUT << "Integer:  " << this->theInt << "\t at address " << &(this->theInt) << ENDL;
+		COUT << "Initial address of 'this': " << this << ENDL << ENDL;
+		
+		COUT << "Double:  " << theDbl << "\t at address " << &theDbl << ENDL;
+		COUT << "Float:  " << theFloat << "\t at address " << &theFloat << ENDL;
+		COUT << "Integer:  " << theInt << "\t at address " << &theInt << ENDL;
 		
 	}
 	
@@ -49,14 +46,14 @@ struct Node{
 int main(void){
 	
 	Node node1( -0.625, 1.5625, 131 );
-	Node node2( -34.77, 44.96, 1842 );
 	
-	COUT << "Node 1 is at address " << &node1 << ENDL;
 	node1.printNodeValues();
-	COUT << ENDL;
 	
-	COUT << "Node 2 is at address " << &node2 << ENDL;
-	node2.printNodeValues();
+	node1.theDbl = -34.77;
+	node1.theFloat = 44.96;
+	node1.theInt = 1842;
+	
+	node1.printNodeValues();
 	
 	return 0;
 	

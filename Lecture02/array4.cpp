@@ -24,7 +24,7 @@ int main(void){
 	
 	long unsigned int numCharacters = 13;
 	
-	char* hello = (char *)malloc( numCharacters * sizeof(char) );
+	char* hello = new char[numCharacters];
 	char* reference = hello;
 	
 	hello[0] = 'H';

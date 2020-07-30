@@ -111,32 +111,25 @@ pascal.o: pascal.cpp pascal.h
 	$(PP) $(CXXFLAGS) -c pascal.cpp	
 	
 	
-# rmq1 Example - Range Minimum Query in n^2 preprocessing
-# Command: make rmq1
-rmq1Objs :=  rmq1.o
-
-rmq1: rmq1.o
-	$(PP) $(CXXFLAGS) -o rmq1 $(rmq1Objs)
-	./rmq1
-
-rmq1.o: rmq1.cpp
-	$(PP) $(CXXFLAGS) -c rmq1.cpp
 	
-	
-# rmq2 Example - Range Minimum Query with Sparse Matrix
-# Command: make rmq2
-rmq2Objs :=  rmq2.o
+# Pascal's Triangle Class Example
+# Command: make pascal
+pascalClassTestObjs := pascalClassTest.o pascalClass.o
 
-rmq2: rmq2.o
-	$(PP) $(CXXFLAGS) -o rmq2 $(rmq2Objs)
-	./rmq2
+pascalClassTest: $(pascalClassTestObjs)
+	$(PP) $(CXXFLAGS) -o pascalClassTest $(pascalClassTestObjs)
+	./pascalClassTest
 
-rmq2.o: rmq2.cpp
-	$(PP) $(CXXFLAGS) -c rmq2.cpp
+pascalClassTest.o: pascalClassTest.cpp pascalClass.h
+	$(PP) $(CXXFLAGS) -c pascalClassTest.cpp
+
+pascalClass.o: pascalClass.cpp pascalClass.h
+	$(PP) $(CXXFLAGS) -c pascalClass.cpp	
 	
+
 
 # Make all
-all: passBy callBy helloCmdLine array array2 procMartix pascal matrix rmq1 rmq2
+all: passBy callBy helloCmdLine array array2 procMartix pascalTest matrix pascalClassTest
 
 # Make clean
 clean :

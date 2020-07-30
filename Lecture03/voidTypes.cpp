@@ -7,7 +7,7 @@
 * same void pointer. First, we store and print 
 * a double only.
 *
-* Lecture 02 - Part 2 - Slide 29
+* Lecture 3 - Slide 4
 **********************************************/
 
 #include <iostream>

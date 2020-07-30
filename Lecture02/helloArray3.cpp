@@ -22,9 +22,9 @@
 ********************************************/
 int main(void){
 	
-	char* hello = "Hello, World";
+	//char* hello = "Hello, World";
 	
-	std::cout << hello << std::endl;
+	std::cout << "Hello, World" << std::endl;
 
 	return 0;
 }

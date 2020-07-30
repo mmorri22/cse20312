@@ -30,7 +30,7 @@ int main(void){
 	
 	*(reference) = 'H';
 	reference = reference + 1;
-	*((char *)(reference)) = 'e';
+	*(reference) = 'e';
 	
 	std::cout << &hello << " " << (void *)hello << " " << hello[0] << std::endl;
 	std::cout << &reference << " " << (void *)reference << " " << *(reference) << std::endl;

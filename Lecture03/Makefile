@@ -1,7 +1,7 @@
 # Author: Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 03 - Part 1
+# This is the Makefile for Lecture 3
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -11,6 +11,44 @@ FLAGS := -O0 -g -Wall
 CXXFLAGS := -m64 -std=c++11 $(FLAGS)
 PQCFLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm
 PQCXX    := -m64 -std=c++11 -Weffc++ $(PQCFLAGS)
+
+
+
+# voidTypes Example
+# Command: make voidTypes
+voidTypesObjs :=  voidTypes.o
+
+voidTypes: voidTypes.o
+	$(PP) $(CXXFLAGS) -o voidTypes $(voidTypesObjs)
+	./voidTypes
+
+voidTypes.o: voidTypes.cpp
+	$(PP) $(CXXFLAGS) -c voidTypes.cpp
+
+
+# voidTypes2 Example
+# Command: make voidTypes2
+voidTypes2Objs :=  voidTypes2.o
+
+voidTypes2: voidTypes2.o
+	$(PP) $(CXXFLAGS) -o voidTypes2 $(voidTypes2Objs)
+	./voidTypes2
+
+voidTypes2.o: voidTypes2.cpp
+	$(PP) $(CXXFLAGS) -c voidTypes2.cpp
+
+
+
+# voidTypes3 Example
+# Command: make voidTypes3
+voidTypes3Objs :=  voidTypes3.o
+
+voidTypes3: voidTypes3.o
+	$(PP) $(CXXFLAGS) -o voidTypes3 $(voidTypes3Objs)
+	./voidTypes3
+
+voidTypes3.o: voidTypes3.cpp
+	$(PP) $(CXXFLAGS) -c voidTypes3.cpp
 	
 	
 
@@ -75,7 +113,18 @@ structSimple: structSimple.o
 
 structSimple.o: structSimple.cpp
 	$(PP) $(CXXFLAGS) -c structSimple.cpp
-	
+
+
+# structSimple2 Example
+# Command: make structSimple2
+structSimple2Objs :=  structSimple2.o
+
+structSimple2: structSimple2.o
+	$(PP) $(CXXFLAGS) -o structSimple2 $(structSimple2Objs)
+	./structSimple
+
+structSimple2.o: structSimple2.cpp
+	$(PP) $(CXXFLAGS) -c structSimple2.cpp	
 
 	
 # structMod Example
@@ -139,7 +188,6 @@ classBadPQC.o: classBad.cpp
 	$(PP) $(PQCXX) -c classBad.cpp
 	
 	
-
 # const Example
 # Command: make const
 constObjs :=  const.o
@@ -150,9 +198,9 @@ const: const.o
 
 const.o: const.cpp
 	$(PP) $(PQCXX) -c const.cpp
-	
-	
-	
+
+
+
 # funcOver Example
 # Command: make funcOver
 funcOverObjs :=  funcOver.o
@@ -165,8 +213,7 @@ funcOver.o: funcOver.cpp
 	$(PP) $(PQCXX) -c funcOver.cpp
 	
 	
-	
-# ambig Example
+# ambiguous Example
 # Command: make ambig
 ambigObjs :=  ambig.o
 
@@ -188,12 +235,11 @@ template: template.o
 	./template
 
 template.o: template.cpp
-	$(PP) $(PQCXX) -c template.cpp
-	
+	$(PP) $(PQCXX) -c template.cpp	
 
 # Make all
-all: voidNode voidNodeBad voidNodeBad2 structNode structSimple structMod classNode classMod classBad const funcOver template
+all: voidTypes voidTypes2 voidTypes3 voidNode voidNodeBad voidNodeBad2 structNode structSimple structMod classNode classMod classBad const ambig template
 
 # Make clean
 clean :
-	rm -rf *.o voidNode voidNodeBad voidNodeBad2 structNode structSimple structMod classNode classMod classBad const funcOver template
+	rm -rf *.o voidTypes voidTypes2 voidTypes3 voidNode voidNodeBad voidNodeBad2 structNode structSimple structMod classNode classMod classBad const ambig template

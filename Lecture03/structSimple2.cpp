@@ -38,9 +38,9 @@ struct Node{
 		COUT << "-----------------------------" << ENDL;
 		COUT << "Initial address of 'this': " << this << ENDL << ENDL;	
 
-		COUT << "Double:  " << this->theDbl << "\t at address " << &(this->theDbl) << ENDL;
-		COUT << "Float:  " << this->theFloat << "\t at address " << &(this->theFloat) << ENDL;
-		COUT << "Integer:  " << this->theInt << "\t at address " << &(this->theInt) << ENDL;
+		COUT << "Double:  " << theDbl << "\t at address " << &theDbl << ENDL;
+		COUT << "Float:  " << theFloat << "\t at address " << &theFloat << ENDL;
+		COUT << "Integer:  " << theInt << "\t at address " << &theInt << ENDL;
 		
 	}
 	

@@ -7,7 +7,7 @@
 * same void pointer. We store and print 
 * a double and a float.
 *
-* Lecture 02 - Part 2 - Slides 16-18
+* Lecture 3 - Slides 5-7
 **********************************************/
 
 #include <iostream>
