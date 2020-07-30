@@ -23,7 +23,7 @@ int main(int argc, char** argv){
 		exit(-1);
 	}
 	
-	for( int iter = 0; i < argc; iter++ ){
+	for( int iter = 0; iter < argc; iter++ ){
 
 		COUT << "argv[" << iter << "] = " << *(argv + iter) << ENDL;
 	}

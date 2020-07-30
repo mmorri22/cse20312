@@ -29,7 +29,7 @@ void printArray(T array[], long unsigned int arraySize)
 int main(){
 	
 	// Brace Initializer Lists
-	int arrayInt[] = {31, 41, 59, 26, 53, 58, 97, 93}; 
+	int arrayInt[] = {31, 41, 59, 26, 53, 58, 97, 93, 1842}; 
 	
 	// Get the size of the array
 	long unsigned int arrayIntSize = sizeof(arrayInt)/sizeof(int); 

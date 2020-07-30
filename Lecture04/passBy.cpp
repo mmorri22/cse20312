@@ -35,7 +35,7 @@ int main(void){
 	Notre[0] = 'N'; Notre[1] = 'o'; Notre[2] = 't'; Notre[3] = 'r'; Notre[4] = 'e'; 
 	
 	int currLetter = -1;	
-	char findChar = 'N';
+	char findChar = 't';
 
 	// Get the location of the letter
 	getLetter(Notre, wordSize, findChar, &currLetter);
