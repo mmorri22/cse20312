@@ -1,87 +1,87 @@
 # Author: Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for Lecture 03 - Part 2
+# This is the Makefile for the CSE 20312 course Lecture 07
 
 # G++ is for the GCC compiler for C++
 PP := g++
 
-# CFLAGS are the compiler flages for when we compile C code in this course
-FLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm
-CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
+# CXXFLAGS are the compiler flages for when we compile C++ code in this course 
+FLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror 
+CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS) 
 
 
-# fact_02_run Example
-# Command: make fact_02_run 
-fact_02_runObjs :=  fact_02_run.o fact_02.o
-
-fact_02_run: $(fact_02_runObjs)
-	$(PP) $(CXXFLAGS) -o fact_02_run $(fact_02_runObjs)
-	./fact_02_run
-
-fact_02_run.o: fact_02_run.cpp fact_02.h
-	$(PP) $(CXXFLAGS) -c fact_02_run.cpp
-
-fact_02.o: fact_02.cpp fact_02.h
-	$(PP) $(CXXFLAGS) -c fact_02.cpp
+INC := include
+SRC := src
+OBJECTS := obj
+EXE := exe
 
 
+# Command: make DynArrTest5
+# Initial Example of DynArr allocation size and capacity
 
-# fact_03_run Example
-# Command: make fact_03_run 
-fact_03_runObjs :=  fact_03_run.o fact_03.o
+DynArrTest5Objs := $(OBJECTS)/DynArrTest5.o
 
-fact_03_run: $(fact_03_runObjs)
-	$(PP) $(CXXFLAGS) -o fact_03_run $(fact_03_runObjs)
-	./fact_03_run
+DynArrTest5: $(DynArrTest5Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/DynArrTest5 $(DynArrTest5Objs)
+	$(EXE)/./DynArrTest5
 
-fact_03_run.o: fact_03_run.cpp fact_03.h
-	$(PP) $(CXXFLAGS) -c fact_03_run.cpp
+$(OBJECTS)/DynArrTest5.o: $(SRC)/DynArrTest5.cpp $(INC)/DynArr5.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/DynArrTest5.cpp -o $@
 
-fact_03.o: fact_03.cpp fact_03.h
-	$(PP) $(CXXFLAGS) -c fact_03.cpp
+
+
+# Command: make DynArrTest5Bad
+# Shows an example of -Wshadow enforcing strict naming
+# Deliberate compiler error
+
+DynArrTest5BadObjs := $(OBJECTS)/DynArrTest5Bad.o
+
+DynArrTest5Bad: $(DynArrTest5BadObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/DynArrTest5Bad $(DynArrTest5BadObjs)
+	$(EXE)/./DynArrTest5Bad
+
+$(OBJECTS)/DynArrTest5Bad.o: $(SRC)/DynArrTest5Bad.cpp $(INC)/DynArr5Bad.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/DynArrTest5Bad.cpp -o $@
+
+
+# Command: make DynArrTest6
+# Initial Example of DynArr allocation size and capacity
+
+DynArrTest6Objs := $(OBJECTS)/DynArrTest6.o
+
+DynArrTest6: $(DynArrTest6Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/DynArrTest6 $(DynArrTest6Objs)
+	$(EXE)/./DynArrTest6
+
+$(OBJECTS)/DynArrTest6.o: $(SRC)/DynArrTest6.cpp $(INC)/DynArr6.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/DynArrTest6.cpp -o $@
+
+
+
+# Command: make DynArrTest
+# Initial Example of DynArr allocation size and capacity
+
+DynArrTestObjs := $(OBJECTS)/DynArrTest.o
+
+DynArrTest: $(DynArrTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/DynArrTest $(DynArrTestObjs)
+	$(EXE)/./DynArrTest
+
+$(OBJECTS)/DynArrTest.o: $(SRC)/DynArrTest.cpp $(INC)/DynArr.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/DynArrTest.cpp -o $@
 	
-	
-	
-# factHeaderEx Example
-# Command: make factHeaderEx 
 
-factHeaderExObjs := factorial.o factHeaderEx.o
-
-factHeaderEx: $(factHeaderExObjs)
-	$(PP) $(CXXFLAGS) -o factHeaderEx $(factHeaderExObjs)
-	./factHeaderEx
-
-factHeaderEx.o: factHeaderEx.cpp factorial.h
-	$(PP) $(CXXFLAGS) -c factHeaderEx.cpp
-
-factorial.o: factorial.cpp factorial.h
-	$(PP) $(CXXFLAGS) -c factorial.cpp
-	
-
-
-# classIntro Example
-# Command: make classIntro 
-classIntroObjs := classIntro.o line.o point.o
-
-classIntro: $(classIntroObjs)
-	$(PP) $(CXXFLAGS) -o classIntro $(classIntroObjs)
-	./classIntro
-
-classIntro.o: classIntro.cpp line.h
-	$(PP) $(CXXFLAGS) -c classIntro.cpp
-
-line.o: line.cpp line.h
-	$(PP) $(CXXFLAGS) -c line.cpp
-
-point.o: point.cpp point.h
-	$(PP) $(CXXFLAGS) -c point.cpp
+# make initialize
+# Will be called by grader to initialize your objects and executables folders
+initialize: 
+	mkdir objects executables
 
 
 
 # Make all
-all: fact_02_run fact_03_run factHeaderEx classIntro
+all: DynArrTest5 DynArrTest6 DynArrTest
 
 # Make clean
 clean :
-	rm -rf *.o fact_02_run fact_03_run factHeaderEx classIntro
+	rm -rf *.o $(OBJECTS)/* $(EXE)/*
