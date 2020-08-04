@@ -12,16 +12,20 @@
 #include <string> /* String Library */
 #include <sstream> /* String Stream for inputting to variables */
 
+#define COUT std::cout
+#define ENDL std::endl
+#define STRING std::string
+#define SSTREAM std::stringstream
 
 /********************************************
 * Function Name  : noBadChars
-* Pre-conditions : std::string testString
+* Pre-conditions : STRING testString
 * Post-conditions: bool
 * 
 * Returns false if any character other than 0-9
 * '.', or '-' appears in the string
 ********************************************/
-bool noBadChars(std::string testString){
+bool noBadChars(STRING testString){
 	
 	for(unsigned int i = 0; i < testString.length(); i++){
 		
@@ -56,62 +60,62 @@ bool noBadChars(std::string testString){
 ********************************************/
 int main(){
 
-	std::string strX;
+	STRING strX;
 	int tempX;
 	
-	std::string strUnsigX;
+	STRING strUnsigX;
 	unsigned int unsigX;
 	
-	std::string strFloatX;
+	STRING strFloatX;
 	float floatY;
 	
-	std::cout << "Input an integer: ";
+	COUT << "Input an integer: ";
 	std::cin >> strX;
 	
 	/* Check if the int input has no chars AND if the string contains . */
-	if(std::stringstream(strX) >> tempX 
+	if(SSTREAM(strX) >> tempX 
 		&& noBadChars(strX)
-		&& strX.find(".") == std::string::npos){
+		&& strX.find(".") == STRING::npos){
 		
-		std::cout << "The integer is " << tempX << std::endl;
+		COUT << "The integer is " << tempX << ENDL;
 		
 	}
 	else{
-		std::cerr << strX << " is not a valid Integer" << std::endl;
+		std::cerr << strX << " is not a valid Integer" << ENDL;
 		exit(-1);
 	}	
 	
-	std::cout << "Input an unsigned integer: ";	
+	COUT << "Input an unsigned integer: ";	
 	std::cin >> strUnsigX;
 
 	/* Check if the int input has no chars AND if the string contains . AND if the string contains -*/
-	if(std::stringstream(strUnsigX) >> unsigX 
+	if(SSTREAM(strUnsigX) >> unsigX 
 		&& noBadChars(strUnsigX)
-		&& strUnsigX.find(".") == std::string::npos 
-		&& strUnsigX.find("-") == std::string::npos){
+		&& strUnsigX.find(".") == STRING::npos 
+		&& strUnsigX.find("-") == STRING::npos){
 			
-		std::cout << "The unsigned integer value is " << unsigX << std::endl;
+		COUT << "The unsigned integer value is " << unsigX << ENDL;
 	
 	}
 	else{
 		
-		std::cerr << strUnsigX << " is not a valid unsigned Integer" << std::endl;
+		std::cerr << strUnsigX << " is not a valid unsigned Integer" << ENDL;
 		exit(-1);
 		
 	}
 	
 	
-	std::cout << "Input a float: ";
+	COUT << "Input a float: ";
 	std::cin >> strFloatX;
-	if(std::stringstream(strFloatX) >> floatY
+	if(SSTREAM(strFloatX) >> floatY
 		&& noBadChars(strFloatX) ){
 		
-		std::cout << "The float value is " << floatY << std::endl;
+		COUT << "The float value is " << floatY << ENDL;
 		
 	}
 	else{
 		
-		std::cerr << strFloatX << " is not a valid Float" << std::endl;
+		std::cerr << strFloatX << " is not a valid Float" << ENDL;
 		exit(-1);
 		
 	}
