@@ -15,6 +15,9 @@ class A{
 		/* Default constructor */
 		A() : x(), y() {
 			std::cout << "Address of object on the heap: " << this << std::endl;
+			
+			std::cout << &x << std::endl;
+			std::cout << &y << std::endl;
 		}
 		
 		/* Overloaded Constructor */

@@ -53,9 +53,9 @@ nameGood2.o: nameGood2.cpp
 	
 # cin Example
 # Command: make cin
-cinObjs :=  cin.o
+cinObjs := cin.o
 
-cin: cin.o
+cin: $(cinObjs)
 	$(PP) $(PQCXX) -o cin $(cinObjs)
 	./cin
 
@@ -65,18 +65,19 @@ cin.o: cin.cpp
 
 # cinStr Example
 # Command: make cinStr
-cinStrObjs :=  cinStr.o
 
-cinStr: cinStr.o
+cinStrObjs := cinStr.o
+
+cinStr: $(cinStrObjs)
 	$(PP) $(PQCXX) -o cinStr $(cinStrObjs)
 	./cinStr
 
 cinStr.o: cinStr.cpp
-	$(PP) $(PQCXX) -c cinStr.cpp	
+	$(PP) $(PQCXX) -c cinStr.cpp
 	
 
 # Make all
-all: namespace nameGood cin cinStr
+all: nameGood cin cinStr
 
 # Make clean
 clean :

@@ -13,7 +13,7 @@
 
 point::point() : x(0), y(0) {}
 
-point::point(COORDINATE inX, COORDINATE inY) : x(inX), y(inY) {}
+point::p(COORDINATE inX, COORDINATE inY) : x(inX), y(inY) {}
 
 
 COORDINATE point::getX() const {

@@ -50,6 +50,7 @@ int main(void){
 	}
 	
 	free( hello );
+	free( reference );
 
 	return 0;
 }

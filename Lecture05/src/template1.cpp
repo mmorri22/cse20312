@@ -1,4 +1,4 @@
-#include "../src/A_1.h"
+#include "../include/A_1.h"
 
 #define COUT std::cout
 #define ENDL std::endl

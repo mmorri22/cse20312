@@ -12,42 +12,51 @@ struct RMQuery
 }; 
   
 // Fills lookup array lookup[n][n] for all possible values of 
-// query ranges 
 template< class T >
-unsigned int** preprocess(T arr[], long unsigned int n) 
+unsigned int** preprocess(T arr[], long unsigned int arraySize) 
 { 
 
-	// Allocate the array for all the values 
-	unsigned int** lookup = (unsigned int **)malloc( n * sizeof(unsigned int *) );
+	// Create the array of pointers to allocate the memory
+	unsigned int** lookup = (unsigned int **)malloc( arraySize * sizeof(unsigned int *) );
 	
 	// Allocate the array for each element
-	for( long unsigned int iter = 0; iter < n; iter++ ){
+	for( long unsigned int iter = 0; iter < arraySize; iter++ ){
 		
-		lookup[iter] = (unsigned int *)malloc( n * sizeof(unsigned int) );
+		lookup[iter] = (unsigned int *)malloc( arraySize * sizeof(unsigned int) );
 	}
 
     // Initialize lookup[][] for the intervals with length 1 
-    for (int i = 0; i < (int)n; i++) 
-        lookup[i][i] = i; 
+    //for (int i = 0; i < (int)arraySize; i++) 
+        //lookup[i][i] = i; 
   
     // Fill rest of the entries in bottom up manner 
-    for (int i=0; i< (int)n; i++) 
+    for (int iter = (int)arraySize - 1; iter >= 0; iter--) 
     { 
-        for (int j = i+1; j< (int)n; j++) 
-  
-           // To find minimum of [0,4], we compare minimum of 
-           // arr[lookup[0][3]] with arr[4]. 
-           if (arr[lookup[i][j - 1]] < arr[j]){ 
-              lookup[i][j] = lookup[i][j - 1]; 
-		   }
-           else{
-              lookup[i][j] = j;
-		   }			  
+        for (int jter = iter; jter <= (int)arraySize - 1; jter++) {
+			
+			if( jter == iter ){
+				
+				lookup[iter][jter] = iter;
+			}
+			else{
+				
+				if( arr[ lookup[iter][ jter - 1 ] ] < arr[jter] ){
+					
+					lookup[iter][jter] = lookup[iter][jter - 1]; 
+					
+				}
+				else{
+					
+					lookup[iter][jter] = jter;
+				}
+			}
+		}		   
     } 
 	
-	for(int i=0; i< (int)n; i++) 
+	
+	for(int i=0; i< (int)arraySize; i++) 
     { 
-		for(long unsigned int j=0; j<n; j++) 
+		for(long unsigned int j=0; j<arraySize; j++) 
 		{ 
 			std::cout << lookup[i][j] << " ";
 		}
@@ -61,12 +70,9 @@ unsigned int** preprocess(T arr[], long unsigned int n)
 template< class T >
 void RMQ( T arr[], unsigned int** lookup, RMQuery theQuery ) 
 { 
-  
-	// Left and right boundaries of current range 
-	int left = q.left, right = q.right; 
 
 	// Print sum of current query range 
-	COUT << "Minimum of [" << left << ", " << right << "] is ";  
+	COUT << "Minimum of [" << theQuery.left << ", " << theQuery.right << "] is ";  
 	COUT << arr[ lookup[ theQuery.left ][ theQuery.right ] ] << ENDL; 
 		 
 } 

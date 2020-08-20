@@ -17,6 +17,8 @@
 template< class T >
 void printArray(T array[], long unsigned int arraySize)
 {
+	
+	std::cout << "Size of Array is " << arraySize << std::endl;
 	for(long unsigned int iter = 0; iter < arraySize; iter++ ){
 		
 		// Print array element using pointer arithmetic
@@ -29,7 +31,7 @@ void printArray(T array[], long unsigned int arraySize)
 int main(){
 	
 	// Brace Initializer Lists
-	int arrayInt[] = {31, 41, 59, 26, 53, 58, 97, 93, 1842}; 
+	int arrayInt[] = {31, 41, 59, 26, 53, 58, 97, 20312, 93, 1842}; 
 	
 	// Get the size of the array
 	long unsigned int arrayIntSize = sizeof(arrayInt)/sizeof(int); 

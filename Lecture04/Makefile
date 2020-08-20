@@ -96,41 +96,89 @@ matrix.o: matrix.cpp
 	$(PP) $(CXXFLAGS) -c matrix.cpp	
 
 
-# Pascal's Triangle Example
-# Command: make pascal
-pascalTestObjs := pascalTest.o pascal.o
+# class1 Example 
+# Command: make point1
+class1Objs := class1.o point1.o
 
-pascalTest: $(pascalTestObjs)
-	$(PP) $(CXXFLAGS) -o pascalTest $(pascalTestObjs)
-	./pascalTest
+class1: $(class1Objs)
+	$(PP) $(CXXFLAGS) -o class1 $(class1Objs)
+	./class1
 
-pascalTest.o: pascalTest.cpp pascal.h
-	$(PP) $(CXXFLAGS) -c pascalTest.cpp
+class1.o: class1.cpp point1.h
+	$(PP) $(CXXFLAGS) -c class1.cpp
 
-pascal.o: pascal.cpp pascal.h
-	$(PP) $(CXXFLAGS) -c pascal.cpp	
+point1.o: point1.cpp point1.h
+	$(PP) $(CXXFLAGS) -c point1.cpp
+
+
+	
+# class2 Example 
+# Command: make point
+class2Objs := class2.o point.o
+
+class2: $(class2Objs)
+	$(PP) $(CXXFLAGS) -o class2 $(class2Objs)
+	./class2
+
+class2.o: class2.cpp point.h
+	$(PP) $(CXXFLAGS) -c class2.cpp
+
+
+
+# class3 Example
+# Command: make class3 
+class3Objs := class3.o line1.o point.o
+
+class3: $(class3Objs)
+	$(PP) $(CXXFLAGS) -o class3 $(class3Objs)
+	./class3
+
+class3.o: class3.cpp line1.h
+	$(PP) $(CXXFLAGS) -c class3.cpp
+
+line1.o: line1.cpp line1.h
+	$(PP) $(CXXFLAGS) -c line1.cpp
 	
 	
 	
-# Pascal's Triangle Class Example
-# Command: make pascal
-pascalClassTestObjs := pascalClassTest.o pascalClass.o
+# class4 Example
+# Command: make class4 
+class4Objs := class4.o line2.o point.o
 
-pascalClassTest: $(pascalClassTestObjs)
-	$(PP) $(CXXFLAGS) -o pascalClassTest $(pascalClassTestObjs)
-	./pascalClassTest
+class4: $(class4Objs)
+	$(PP) $(CXXFLAGS) -o class4 $(class4Objs)
+	./class4
 
-pascalClassTest.o: pascalClassTest.cpp pascalClass.h
-	$(PP) $(CXXFLAGS) -c pascalClassTest.cpp
+class4.o: class4.cpp line2.h
+	$(PP) $(CXXFLAGS) -c class4.cpp
 
-pascalClass.o: pascalClass.cpp pascalClass.h
-	$(PP) $(CXXFLAGS) -c pascalClass.cpp	
+line2.o: line2.cpp line2.h
+	$(PP) $(CXXFLAGS) -c line2.cpp
 	
+
+
+# classIntro Example
+# Command: make classIntro 
+classIntroObjs := classIntro.o line.o point.o
+
+classIntro: $(classIntroObjs)
+	$(PP) $(CXXFLAGS) -o classIntro $(classIntroObjs)
+	./classIntro
+
+classIntro.o: classIntro.cpp line.h
+	$(PP) $(CXXFLAGS) -c classIntro.cpp
+
+line.o: line.cpp line.h
+	$(PP) $(CXXFLAGS) -c line.cpp
+
+point.o: point.cpp point.h
+	$(PP) $(CXXFLAGS) -c point.cpp
+
 
 
 # Make all
-all: passBy callBy helloCmdLine array array2 procMartix pascalTest matrix pascalClassTest
+all: passBy callBy helloCmdLine array array2 procMartix pascalTest matrix 
 
 # Make clean
 clean :
-	rm -rf *.o passBy callBy helloCmdLine array array2 procMartix matrix pascal rmq1 rmq2
+	rm -rf *.o passBy callBy helloCmdLine array array2 procMartix matrix

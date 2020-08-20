@@ -32,9 +32,9 @@ int main(void){
 	long unsigned int wordSize = 5;
 	char* Notre = (char *)malloc(wordSize * sizeof(char));
 	
-	Notre[0] = 'N'; Notre[1] = 'o'; Notre[2] = 't'; Notre[3] = 'r'; Notre[4] = 'e'; 
+	Notre[0] = 'N'; Notre[1] = 'o'; Notre[2] 
+	int currLetter = -1;	= 't'; Notre[3] = 'r'; Notre[4] = 'e'; 
 	
-	int currLetter = -1;	
 	char findChar = 't';
 
 	// Get the location of the letter
