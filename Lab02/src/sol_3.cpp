@@ -6,7 +6,7 @@ int main(void){
 	
 	// Default constructor - Length 0
 	COUT << "First Solution: " << ENDL;
-	DynArr<int> stock;
+	std::vector<int> stock;
 	
 	// Push back values 
 	stock.push_back(7);
@@ -24,7 +24,7 @@ int main(void){
 	// Default constructor - Length 0
 	COUT << ENDL;
 	COUT << "Second Solution: " << ENDL;
-	DynArr<int> stock2;
+	std::vector<int> stock2;
 	
 	// Push back values 
 	stock2.push_back(7);

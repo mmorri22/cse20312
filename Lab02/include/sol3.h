@@ -1,21 +1,21 @@
 #ifndef SOL3_H
 #define SOL3_H
 
-#include "DynArr.h"
+#include <vector>
 #include <iostream>
 
 #define COUT std::cout
 #define ENDL std::endl
 
-void printArray(const DynArr<int>& array){
+void printArray(const std::vector<int>& array){
 	
 	COUT << "Input: [";
 	
-	for(unsigned int iter = 0; iter < array.length(); iter++){
+	for(unsigned int iter = 0; iter < array.size(); iter++){
 		
 		COUT << array[iter];
 		
-		if( iter < array.length() - 1){
+		if( iter < array.size() - 1){
 			
 			COUT << ",";
 		}
@@ -26,7 +26,7 @@ void printArray(const DynArr<int>& array){
 	
 }
 
-void findSolution(const DynArr<int>& array){
+void findSolution(const std::vector<int>& array){
 	
 	int minimumLoc = -1;
 	int minumumVal = 2147483647; // Largest Signed Int Possible
@@ -34,7 +34,7 @@ void findSolution(const DynArr<int>& array){
 	int nextLocation = -1;
 	int nextLargest = -1;	// Smallest Value
 	
-	for(unsigned int iter = 0; iter < array.length(); iter++){
+	for(unsigned int iter = 0; iter < array.size(); iter++){
 
 		if( array[iter] < minumumVal ){
 			

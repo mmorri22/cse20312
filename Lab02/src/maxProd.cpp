@@ -1,18 +1,18 @@
-#include "../include/DynArr.h"
+#include <vector>
 #include <iostream>
 
 #define COUT std::cout
 #define ENDL std::endl
 
-void printArray( DynArr<int>& theArray ){
+void printArray( std::vector<int>& theArray ){
 	
 	COUT << "[";
 	
-	for(unsigned int iter = 0; iter < theArray.length(); iter++){
+	for(unsigned int iter = 0; iter < theArray.size(); iter++){
 		
 		COUT << theArray[iter];
 		
-		if( iter < theArray.length() - 1 ){
+		if( iter < theArray.size() - 1 ){
 			
 			COUT << ",";
 		}
@@ -22,7 +22,7 @@ void printArray( DynArr<int>& theArray ){
 	
 }
 
-int maxSubArrayDyn( DynArr<int>& theArray ) {
+int maxSubArrayDyn( std::vector<int>& theArray ) {
 	
 	int currMax = theArray[0];
 	int globalMax = theArray[0];
@@ -37,7 +37,7 @@ int maxSubArrayDyn( DynArr<int>& theArray ) {
 		numNeg = 1;
 	}
 		
-	for(unsigned int iter = 1; iter < theArray.length(); iter++){
+	for(unsigned int iter = 1; iter < theArray.size(); iter++){
 		
 		COUT << theArray[iter] << " " << currMax << " " << globalMax << " " << firstNegLoc << " " << numNeg << ENDL;
 		
@@ -81,7 +81,7 @@ int maxSubArrayDyn( DynArr<int>& theArray ) {
 int main(){
 	
 	// Create first array
-	DynArr<int> array1;
+	std::vector<int> array1;
 	
 	array1.push_back( -2 );		array1.push_back( 1 );
 	array1.push_back( -3 );		array1.push_back( 4 );

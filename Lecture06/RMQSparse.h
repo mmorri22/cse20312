@@ -63,11 +63,10 @@ class RMQSparse{
 		
 		T getRMQ( RMQuery theQuery ){
 			
-			// For [2,10], j = 3 
+			// Determine the column 
 			unsigned int j = (unsigned int)log2( theQuery.right - theQuery.left + 1 ); 
 		  
-			// For [2,10], we compare arr[lookup[0][3]] and 
-			// arr[lookup[3][3]],  
+			// Get the new left and right values
 			unsigned int lookupLeft = lookup[theQuery.left][j];
 			unsigned int lookupRight = lookup[theQuery.right - (1<<j) + 1][j];
 			

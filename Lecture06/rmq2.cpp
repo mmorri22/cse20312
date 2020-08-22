@@ -23,7 +23,7 @@ void test1(){
 
 	RMQuery q1(0, 3);	
 	RMQuery q2(1, 4);
-	RMQuery q3(4, 7);
+	RMQuery q3(0, 7);
 	RMQuery q4(6, 7);
 	
 	COUT << "Test 1 Runs" << ENDL;

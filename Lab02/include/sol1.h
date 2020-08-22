@@ -1,21 +1,21 @@
 #ifndef SOL1_H
 #define SOL1_H
 
-#include "DynArr.h"
+#include <vector>
 #include <iostream>
 
 #define COUT std::cout
 #define ENDL std::endl
 
-void printArray(const DynArr<int>& array){
+void printArray(const std::vector<int>& array){
 	
 	COUT << "Input: [";
 	
-	for(unsigned int iter = 0; iter < array.length(); iter++){
+	for(unsigned int iter = 0; iter < array.size(); iter++){
 		
 		COUT << array[iter];
 		
-		if( iter < array.length() - 1){
+		if( iter < array.size() - 1){
 			
 			COUT << ",";
 		}

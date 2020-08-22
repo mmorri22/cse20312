@@ -17,6 +17,17 @@ OBJ := obj
 EXE := exe
 
 
+# Command: make vector
+vectorObjs := $(OBJ)/vector.o
+
+vector: $(vectorObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/vector $(vectorObjs)
+	$(EXE)/./vector
+
+$(OBJ)/vector.o: $(SRC)/vector.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/vector.cpp -o $@
+
+
 # Command: make sol_1
 sol_1Objs := $(OBJ)/sol_1.o
 
@@ -24,7 +35,7 @@ sol_1: $(sol_1Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/sol_1 $(sol_1Objs)
 	$(EXE)/./sol_1
 
-$(OBJ)/sol_1.o: $(SRC)/sol_1.cpp $(INC)/DynArr.h $(INC)/sol1.h
+$(OBJ)/sol_1.o: $(SRC)/sol_1.cpp $(INC)/sol1.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/sol_1.cpp -o $@
 
 
@@ -36,7 +47,7 @@ sol_2: $(sol_2Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/sol_2 $(sol_2Objs)
 	$(EXE)/./sol_2
 
-$(OBJ)/sol_2.o: $(SRC)/sol_2.cpp $(INC)/DynArr.h $(INC)/sol2.h
+$(OBJ)/sol_2.o: $(SRC)/sol_2.cpp $(INC)/sol2.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/sol_2.cpp -o $@
 	
 	
@@ -47,7 +58,7 @@ sol_3: $(sol_3Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/sol_3 $(sol_3Objs)
 	$(EXE)/./sol_3
 
-$(OBJ)/sol_3.o: $(SRC)/sol_3.cpp $(INC)/DynArr.h $(INC)/sol3.h
+$(OBJ)/sol_3.o: $(SRC)/sol_3.cpp $(INC)/sol3.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/sol_3.cpp -o $@
 
 
@@ -58,7 +69,7 @@ sol: $(solObjs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/sol $(solObjs)
 	$(EXE)/./sol
 
-$(OBJ)/sol.o: $(SRC)/sol.cpp $(INC)/DynArr.h $(INC)/sol.h
+$(OBJ)/sol.o: $(SRC)/sol.cpp $(INC)/sol.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/sol.cpp -o $@
 
 
@@ -69,7 +80,7 @@ Product: $(ProductObjs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/Product $(ProductObjs)
 	$(EXE)/./Product
 
-$(OBJ)/Product.o: $(SRC)/Product.cpp $(INC)/DynArr.h
+$(OBJ)/Product.o: $(SRC)/Product.cpp $(INC)/Product.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/Product.cpp -o $@
 
 

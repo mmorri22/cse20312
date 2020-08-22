@@ -12,7 +12,7 @@ void printData( DynArr<T>& theArr ){
 	
 	// Print initial size and capacity of floatArr
 	COUT << "Initial: ";
-	COUT << "Array has a size of " << theArr.length()
+	COUT << "Array has a size of " << theArr.size()
 		<< " and a capacity of " << theArr.capacity();
 	COUT << "\n" << ENDL;	
 	

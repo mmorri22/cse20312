@@ -6,7 +6,7 @@ class DynArr{
 	
 		private:
 		
-			unsigned int size; // Current number of elements
+			unsigned int length; // Current number of elements
 			unsigned int capac; // Current capacity
 			T* data;
 			
@@ -21,9 +21,9 @@ class DynArr{
 		
 		public:
 		
-			DynArr(const int sizeIn = 0) :
-				size(sizeIn),
-				capac(sizeIn),
+			DynArr(const int lengthIn = 0) :
+				length(lengthIn),
+				capac(lengthIn),
 				data(new T[capac]) {}
 				
 				
@@ -33,20 +33,20 @@ class DynArr{
 			
 			
 			DynArr(const DynArr<T>& C) : 
-				size(C.size), capac(C.capac), data(new T[capac])
+				length(C.length), capac(C.capac), data(new T[capac])
 			{
-				copy(data, C.data, C.size);
+				copy(data, C.data, C.length);
 			}
 			
 			
 			DynArr<T>& operator=(const DynArr<T>& assign){
 				
 				if(this != &assign){
-					size = assign.size;
+					length = assign.length;
 					capac = assign.capac;
 					data = new T[capac];
 					
-					copy(data, assign.data, size);
+					copy(data, assign.data, length);
 				}
 				
 				return *this;
@@ -65,16 +65,16 @@ class DynArr{
 
 			T& end(){
 				
-				return data[size - 1];
+				return data[length - 1];
 			}
 			
 			const T& end() const{
 				
-				return data[size-1];
+				return data[length-1];
 			}	
 			
-			unsigned int length() const{
-				return size;
+			unsigned int size() const{
+				return length;
 			}
 			
 			unsigned int capacity() const{
@@ -94,9 +94,9 @@ class DynArr{
 			
 			void push_back(const T& value){
 				
-				if(size >= capac){
+				if(length >= capac){
 					
-					if( size == 0 ){
+					if( length == 0 ){
 						
 						capac = 1;
 					}
@@ -107,7 +107,7 @@ class DynArr{
 					
 					T* tmp = new T[capac];
 					
-					copy(tmp, data, size);
+					copy(tmp, data, length);
 					
 					delete [] data;
 					
@@ -115,8 +115,8 @@ class DynArr{
 					
 				}
 				
-				data[size] = value;
-				size++;
+				data[length] = value;
+				length++;
 				
 			}
 			
@@ -124,15 +124,15 @@ class DynArr{
 			void erase(unsigned int e){
 				
 				// Error checking on the bounds 
-				if(e >= size){
+				if(e >= length){
 					
 					return;
 				}
 				
-				// Reduce the size of the DynArr if
-				// size is now less than half of the 
+				// Reduce the length of the DynArr if
+				// length is now less than half of the 
 				// current capacity 
-				if(size - 1 == capac / 2){
+				if(length - 1 == capac / 2){
 					capac = capac / 2;
 				}
 				
@@ -152,7 +152,7 @@ class DynArr{
 				
 				delete [] data;
 				data = tmp;
-				--size;
+				--length;
 
 			}
 			

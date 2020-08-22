@@ -6,7 +6,7 @@ class DynArr{
 	
 		private:
 		
-			unsigned int size; // Current number of elements
+			unsigned int length; // Current number of elements
 			unsigned int capac; // Current capacity
 			T* data;
 
@@ -23,17 +23,17 @@ class DynArr{
 		public:
 		
 			// Dynamic Array Constructor
-			DynArr(const int sizeIn = 0) :
-				size(sizeIn),
-				capac(sizeIn),
+			DynArr(const int lengthIn = 0) :
+				length(lengthIn),
+				capac(lengthIn),
 				data(new T[capac]) {}
 				
 			
 			// Copy Constructor
 			DynArr(const DynArr<T>& C) : 
-				size(C.size), capac(C.capac), data(new T[capac])
+				length(C.length), capac(C.capac), data(new T[capac])
 			{
-				copy(data, C.data, C.size);
+				copy(data, C.data, C.length);
 			}
 			
 			
@@ -41,11 +41,11 @@ class DynArr{
 			DynArr<T>& operator=(const DynArr<T>& assign){
 				
 				if(this != &assign){
-					size = assign.size;
+					length = assign.length;
 					capac = assign.capac;
 					data = new T[capac];
 					
-					copy(data, assign.data, size);
+					copy(data, assign.data, length);
 				}
 				
 				return *this;
@@ -64,16 +64,16 @@ class DynArr{
 
 			T& end(){
 				
-				return data[size - 1];
+				return data[length - 1];
 			}
 			
 			const T& end() const{
 				
-				return data[size-1];
+				return data[length-1];
 			}	
 			
-			unsigned int length() const{
-				return size;
+			unsigned int size() const{
+				return length;
 			}
 			
 			unsigned int capacity() const{

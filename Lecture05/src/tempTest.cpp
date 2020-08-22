@@ -19,7 +19,7 @@ int main()  {
    (*c).setY( (float)18.231 ); // Showing (*c). and c-> are equivalent
    
    // Print the location in memory of C
-   std::cout << "Location in memory of c: " << c << std::endl;
+   std::cout << "Location on the Heap of c: " << c << std::endl;
    
    // Print the location of the register holding the location of C 
    std::cout << "Base register address c: " << &c << std::endl;
