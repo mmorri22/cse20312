@@ -207,7 +207,7 @@ $(OBJ)/maxProd.o: $(SRC)/maxProd.cpp $(INC)/DynArr.h
 # Will be called by grader to initialize your objects and executables folders
 
 initialize: 
-	mkdir objects executables
+	mkdir $(OBJ) $(EXE)
 	
 
 

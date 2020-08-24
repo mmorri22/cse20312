@@ -9,7 +9,19 @@ PP := g++
 # CFLAGS are the compiler flages for when we compile C code in this course 
 FLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm
 CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
-	
+
+
+# Factorial Example
+# Command: make fact
+factObjs := fact.o
+
+fact: $(factObjs)
+	$(PP) $(CXXFLAGS) -o fact $(factObjs)
+	./fact
+
+fact.o: fact.cpp
+	$(PP) $(CXXFLAGS) -c fact.cpp
+
 	
 	
 # Fibonacci Example

@@ -1,5 +1,5 @@
 /**********************************************
-* File: tempHead.cpp
+* File: vector.cpp
 * Author: Matthew Morrison
 * Email: matt.morrison@nd.edu
 * 
