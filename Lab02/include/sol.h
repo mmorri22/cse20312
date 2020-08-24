@@ -34,6 +34,11 @@ void findSolution(const std::vector<int>& array){
 	int nextLocation = -1;
 	int nextLargest = -1;	// Smallest Value
 	
+	// Current Maximum Values
+	int compMin = -1;
+	int compMax = -1;
+			
+	
 	for(unsigned int iter = 0; iter < array.size(); iter++){
 
 		if( array[iter] < minumumVal ){
@@ -44,6 +49,7 @@ void findSolution(const std::vector<int>& array){
 			// The largest should NOT be before the minimum location
 			nextLocation = iter;
 			nextLargest = array[iter];
+			
 		}
 		
 		// If the next location is not the smallest
@@ -54,15 +60,27 @@ void findSolution(const std::vector<int>& array){
 			nextLargest = array[iter];
 			
 		}
-
+		
+		// Keeping track of the largest difference
+		if( compMin == -1 ){
+			compMin = iter;
+			compMax = iter;				
+		}
+		else{
+			
+			if( nextLargest - minumumVal >= array[compMax] - array[compMin] ){
+				
+				compMax = nextLocation;
+				compMin = minimumLoc;
+			}
+		}
 	}
 	
 	// Print the output stock 
-	
-	COUT << "Stock: " << nextLargest - minumumVal << ENDL; 
+	COUT << "Stock: " << array[compMax] - array[compMin] << ENDL; 
 	
 	// If minimumLoc == nextLocation, then we did not find a good stock
-	if( minimumLoc == nextLocation ){
+	if( compMin == compMax ){
 		
 		COUT << "Explanation: In this case, no transaction is done, i.e. max profit = 0." << ENDL;
 		
@@ -70,8 +88,8 @@ void findSolution(const std::vector<int>& array){
 	
 	else{
 		
-		COUT << "Explanation: Sell at " << minimumLoc << " when stock is " << minumumVal << ENDL;
-		COUT << "             Buy at " << nextLocation << " when stock is " << nextLargest << ENDL;
+		COUT << "Explanation: Sell at " << compMax << " when stock is " << array[compMax] << ENDL;
+		COUT << "             Buy at " << compMin << " when stock is " << array[compMin] << ENDL;
 		
 	}
 

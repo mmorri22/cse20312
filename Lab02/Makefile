@@ -92,7 +92,7 @@ Product1: $(Product1Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/Product1 $(Product1Objs)
 	$(EXE)/./Product1
 
-$(OBJ)/Product1.o: $(SRC)/Product1.cpp $(INC)/DynArr.h
+$(OBJ)/Product1.o: $(SRC)/Product1.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/Product1.cpp -o $@
 
 
@@ -103,7 +103,7 @@ Product2: $(Product2Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/Product2 $(Product2Objs)
 	$(EXE)/./Product2
 
-$(OBJ)/Product2.o: $(SRC)/Product2.cpp $(INC)/DynArr.h
+$(OBJ)/Product2.o: $(SRC)/Product2.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/Product2.cpp -o $@
 
 
@@ -115,7 +115,7 @@ Product3: $(Product3Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/Product3 $(Product3Objs)
 	$(EXE)/./Product3
 
-$(OBJ)/Product3.o: $(SRC)/Product3.cpp $(INC)/DynArr.h
+$(OBJ)/Product3.o: $(SRC)/Product3.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/Product3.cpp -o $@
 	
 
@@ -127,7 +127,7 @@ maxSub1: $(maxSub1Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub1 $(maxSub1Objs)
 	$(EXE)/./maxSub1
 
-$(OBJ)/maxSub1.o: $(SRC)/maxSub1.cpp $(INC)/DynArr.h
+$(OBJ)/maxSub1.o: $(SRC)/maxSub1.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/maxSub1.cpp -o $@
 
 
@@ -139,7 +139,7 @@ maxSub2: $(maxSub2Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub2 $(maxSub2Objs)
 	$(EXE)/./maxSub2
 
-$(OBJ)/maxSub2.o: $(SRC)/maxSub2.cpp $(INC)/DynArr.h
+$(OBJ)/maxSub2.o: $(SRC)/maxSub2.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/maxSub2.cpp -o $@
 
 
@@ -151,7 +151,7 @@ maxSub3: $(maxSub3Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub3 $(maxSub3Objs)
 	$(EXE)/./maxSub3
 
-$(OBJ)/maxSub3.o: $(SRC)/maxSub3.cpp $(INC)/DynArr.h
+$(OBJ)/maxSub3.o: $(SRC)/maxSub3.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/maxSub3.cpp -o $@
 
 
@@ -163,7 +163,7 @@ maxSub4: $(maxSub4Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub4 $(maxSub4Objs)
 	$(EXE)/./maxSub4
 
-$(OBJ)/maxSub4.o: $(SRC)/maxSub4.cpp $(INC)/DynArr.h
+$(OBJ)/maxSub4.o: $(SRC)/maxSub4.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/maxSub4.cpp -o $@
 
 
@@ -175,7 +175,7 @@ maxSub: $(maxSubObjs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/maxSub $(maxSubObjs)
 	$(EXE)/./maxSub
 
-$(OBJ)/maxSub.o: $(SRC)/maxSub.cpp $(INC)/DynArr.h
+$(OBJ)/maxSub.o: $(SRC)/maxSub.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/maxSub.cpp -o $@
 
 
@@ -187,7 +187,7 @@ maxProd1: $(maxProd1Objs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/maxProd1 $(maxProd1Objs)
 	$(EXE)/./maxProd1
 
-$(OBJ)/maxProd1.o: $(SRC)/maxProd1.cpp $(INC)/DynArr.h
+$(OBJ)/maxProd1.o: $(SRC)/maxProd1.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/maxProd1.cpp -o $@
 
 
@@ -199,7 +199,7 @@ maxProd: $(maxProdObjs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/maxProd $(maxProdObjs)
 	$(EXE)/./maxProd
 
-$(OBJ)/maxProd.o: $(SRC)/maxProd.cpp $(INC)/DynArr.h
+$(OBJ)/maxProd.o: $(SRC)/maxProd.cpp 
 	$(PP) $(CXXFLAGS) -c $(SRC)/maxProd.cpp -o $@
 	
 

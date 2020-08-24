@@ -34,6 +34,11 @@ void findSolution(const std::vector<int>& array){
 	int nextLocation = -1;
 	int nextLargest = -1;	// Smallest Value
 	
+	// Current Maximum Values
+	int maxLocation = -1;
+	int nextMaxLocation = -1;
+	int maxValue = -1;
+	
 	for(unsigned int iter = 0; iter < array.size(); iter++){
 
 		if( array[iter] < minumumVal ){
@@ -44,6 +49,7 @@ void findSolution(const std::vector<int>& array){
 			// The largest should NOT be before the minimum location
 			nextLocation = iter;
 			nextLargest = array[iter];
+			
 		}
 		
 		// If the next location is not the smallest
@@ -51,7 +57,15 @@ void findSolution(const std::vector<int>& array){
 		else if (array[iter] > nextLargest){
 			
 			nextLocation = iter;
-			nextLargest = array[iter];
+			maxLocation = array[iter];
+			
+			// Check if the newest largest is 
+			if( maxLocation == -1 ){
+				
+				maxLocation = nextLocation
+				nextMaxLocation = maxLocation;
+				maxValue = array[maxLocation];
+			}
 			
 		}
 
