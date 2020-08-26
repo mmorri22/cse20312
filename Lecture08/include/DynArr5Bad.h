@@ -24,7 +24,7 @@ class DynArr{
 		
 			// Dynamic Array Constructor
 			DynArr(const int sizeIn = 0) :
-				size(sizeIn),
+				size(0),
 				capac(sizeIn),
 				data(new T[capac]) {}
 				

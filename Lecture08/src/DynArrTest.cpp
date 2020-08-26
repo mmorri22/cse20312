@@ -6,6 +6,8 @@ const int LENGTH = 10;
 
 int main(void)
 {
+	
+	
 	// PQC requirws time(NULL) be cast to unsigned int
     srand( (unsigned int)time(NULL) );
 	
@@ -14,7 +16,7 @@ int main(void)
    
    // Print initial size and capacity of y
    std::cout << "Initial: ";
-   std::cout << "floatArr has a size of " << floatArr.length()
+   std::cout << "floatArr has a size of " << floatArr.size()
 		<< " and a capacity of " << floatArr.capacity();
    std::cout << "\n" << std::endl;
    
@@ -24,15 +26,30 @@ int main(void)
    floatArr.push_back( (float)-0.0102 );	floatArr.push_back( (float)4.4489 );
    floatArr.push_back( (float)22.46 );		floatArr.push_back( (float)3.2e-17 );
    
-   std::cout << "y has a size of " << floatArr.length() << " and a capacity of " 
+   
+   std::cout << "y has a size of " << floatArr.size() << " and a capacity of " 
 		<< floatArr.capacity() << ": ";
 		
-   for(unsigned int iter = 0; iter < floatArr.length(); ++iter){
+		
+   for(unsigned int iter = 0; iter < floatArr.size(); ++iter){
 	   
 	   std::cout << floatArr[iter] << " ";
    }
    std::cout << std::endl << (char)10;
    
+   
+   // Delete random elements from the Dynamic Array
+   while( floatArr.size() > 0 ){
+	   
+	   std::cout << "Current length of floatArr = " << floatArr.size() << std::endl;
+	   
+	   unsigned int eraseLoc = rand() % floatArr.size();
+	   
+	   std::cout << "Erasing element " << eraseLoc << "... " << std::endl;
+	   
+	   floatArr.erase( eraseLoc );
+   }
+      
    // Update a specific value 
    std::cout << "floatArr[3] before = " << floatArr[3] << std::endl;
    floatArr[3] = (float)1842;
@@ -43,7 +60,7 @@ int main(void)
 	
    std::cout << "Initial: ";
    // Remember: (*x). and x-> are logically equivalent
-   std::cout << "x has a size of " << x->length() << " and a capacity of " << (*x).capacity();
+   std::cout << "x has a size of " << x->size() << " and a capacity of " << (*x).capacity();
    std::cout << "\n" << std::endl;
    
    // Generate a random number for all 
@@ -52,9 +69,9 @@ int main(void)
     }
    
    // Remember: (*x). and x-> are logically equivalent
-   std::cout << "x has a size of " << (*x).length() << " and a capacity of " << x->capacity() << ": ";
+   std::cout << "x has a size of " << (*x).size() << " and a capacity of " << x->capacity() << ": ";
    
-   for(unsigned int iter = 0; iter < x->length(); ++iter){
+   for(unsigned int iter = 0; iter < x->size(); ++iter){
 	   
 	   //(*x) de-references x, which then allows the [] operator to be called
 	   std::cout << (*x)[iter] << " ";
@@ -64,7 +81,7 @@ int main(void)
    std::cout << "(*x)[3] before = " << (*x)[3]  << std::endl;
    (*x)[3]  = (float)27;
    std::cout << "(*x)[3]  after = " << (*x)[3] << "\n\n";
-   
+
  
    delete x;    // "delete floatArr;" not necessary, since floatArr is not a pointer
    

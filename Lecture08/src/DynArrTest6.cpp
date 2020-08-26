@@ -12,7 +12,7 @@ void printData( DynArr<T>& theArr ){
 	
 	// Print initial size and capacity of floatArr
 	COUT << "Initial: ";
-	COUT << "Array has a size of " << theArr.length()
+	COUT << "Array has a size of " << theArr.size()
 		<< " and a capacity of " << theArr.capacity();
 	COUT << "\n" << ENDL;	
 	
@@ -36,7 +36,7 @@ int main(void)
 	printData(dblArr);
 	
 	// Print Values in dblArray
-	for(unsigned int i = 0; i < dblArr.length(); i++){
+	for(unsigned int i = 0; i < dblArr.size(); i++){
 		
 		COUT << dblArr[i] << ENDL;
 		
@@ -53,7 +53,7 @@ int main(void)
 	dblArr[5] = 30.23;
 
 	// Print Values in dblArray after update
-	for(unsigned int i = 0; i < dblArr.length(); i++){
+	for(unsigned int i = 0; i < dblArr.size(); i++){
 		
 		COUT << dblArr[i] << ENDL;
 		
