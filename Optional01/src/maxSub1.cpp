@@ -8,11 +8,11 @@ void printArray( DynArr<int>& theArray ){
 	
 	COUT << "[";
 	
-	for(unsigned int iter = 0; iter < theArray.length(); iter++){
+	for(unsigned int iter = 0; iter < theArray.size(); iter++){
 		
 		COUT << theArray[iter];
 		
-		if( iter < theArray.length() - 1 ){
+		if( iter < theArray.size() - 1 ){
 			
 			COUT << ",";
 		}
@@ -26,7 +26,7 @@ int maxSubArrayBrute( DynArr<int>& theArray ) {
 	
 	int maxSize = -2147483648;		// Largest Negative 32 bit integer
 		
-	for(unsigned int iter = 0; iter < theArray.length(); iter++){
+	for(unsigned int iter = 0; iter < theArray.size(); iter++){
 		
 		int sum = theArray[iter];
 		

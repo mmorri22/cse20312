@@ -8,11 +8,11 @@ void printArray( DynArr<int>& theArray ){
 	
 	COUT << "[";
 	
-	for(unsigned int iter = 0; iter < theArray.length(); iter++){
+	for(unsigned int iter = 0; iter < theArray.size(); iter++){
 		
 		COUT << theArray[iter];
 		
-		if( iter < theArray.length() - 1 ){
+		if( iter < theArray.size() - 1 ){
 			
 			COUT << ",";
 		}
@@ -27,7 +27,7 @@ int maxSubArrayDyn( DynArr<int>& theArray ) {
 	int currMax = theArray[0];
 	int globalMax = theArray[0];
 		
-	for(unsigned int iter = 1; iter < theArray.length(); iter++){
+	for(unsigned int iter = 1; iter < theArray.size(); iter++){
 		
 		// Get the intermediate sum
 		int sum = theArray[iter] + currMax;
