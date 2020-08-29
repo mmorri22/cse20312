@@ -1,7 +1,7 @@
 # Author: Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for the CSE 20312 - Lecture 11
+# This is the Makefile for the CSE 24312 - Lecture 08 - Part 2
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -17,94 +17,63 @@ OBJ := obj
 EXE := exe
 
 
-# Command: make fibOld
-fibOldObjs := $(OBJ)/fibOld.o
+# Command: make IrishTest
+# Base class for First Inheritance Example
+IrishTestObjs := $(OBJ)/IrishTest.o $(OBJ)/Irish.o 
 
-fibOld: $(fibOldObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/fibOld $(fibOldObjs)
+IrishTest: $(IrishTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/IrishTest $(IrishTestObjs)
+	$(EXE)/./IrishTest
 
-$(OBJ)/fibOld.o: $(SRC)/fibOld.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/fibOld.cpp -o $@
+$(OBJ)/IrishTest.o: $(SRC)/IrishTest.cpp $(INC)/Irish.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/IrishTest.cpp -o $@
+
+$(OBJ)/Irish.o: $(INC)/Irish.cpp $(INC)/Irish.h
+	$(PP) $(CXXFLAGS) -c $(INC)/Irish.cpp -o $@
+
+
+
+# Command: make Inherit 
+# Derived Classes for First Inheritance Example 
+InheritObjs := $(OBJ)/Inherit.o $(OBJ)/Faculty.o $(OBJ)/Student.o $(OBJ)/Irish.o
+
+Inherit: $(InheritObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/Inherit $(InheritObjs)
+	$(EXE)/./Inherit
+
+# Inherit.cpp class both derived classes
+$(OBJ)/Inherit.o: $(SRC)/Inherit.cpp $(INC)/Student.h $(INC)/Faculty.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/Inherit.cpp -o $@
+
+# Faculty inherits Irish
+$(OBJ)/Faculty.o: $(INC)/Faculty.cpp $(INC)/Faculty.h $(INC)/Irish.h
+	$(PP) $(CXXFLAGS) -c $(INC)/Faculty.cpp -o $@
+
+# Student inherits Irish
+$(OBJ)/Student.o: $(INC)/Student.cpp $(INC)/Student.h $(INC)/Irish.h
+	$(PP) $(CXXFLAGS) -c $(INC)/Student.cpp -o $@
+
+# Irish.o is already created in the Base Class
 	
-	
-# Command: make fibMemo
-fibMemoObjs := $(OBJ)/fibMemo.o
-
-fibMemo: $(fibMemoObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/fibMemo $(fibMemoObjs)
-
-$(OBJ)/fibMemo.o: $(SRC)/fibMemo.cpp $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/fibMemo.cpp -o $@
 
 
+# Command: make Inherit2
+# Example of this object in Inheritance Example 
+Inherit2Objs := $(OBJ)/Inherit2.o $(OBJ)/Faculty.o $(OBJ)/Student.o $(OBJ)/Irish.o
 
-# Command: make steps
-stepsObjs := $(OBJ)/steps.o
+Inherit2: $(Inherit2Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/Inherit2 $(Inherit2Objs)
+	$(EXE)/./Inherit2
 
-steps: $(stepsObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/steps $(stepsObjs)
+# Inherit.cpp class both derived classes
+$(OBJ)/Inherit2.o: $(SRC)/Inherit2.cpp $(INC)/Student.h $(INC)/Faculty.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/Inherit2.cpp -o $@
 
-$(OBJ)/steps.o: $(SRC)/steps.cpp $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/steps.cpp -o $@
-
-
-
-# Command: make coinChange
-coinChangeObjs := $(OBJ)/coinChange.o
-
-coinChange: $(coinChangeObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange $(coinChangeObjs)
-
-$(OBJ)/coinChange.o: $(SRC)/coinChange.cpp $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange.cpp -o $@
-
-
-
-# Command: make coinChange1
-coinChange1Objs := $(OBJ)/coinChange1.o
-
-coinChange1: $(coinChange1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange1 $(coinChange1Objs)
-
-$(OBJ)/coinChange1.o: $(SRC)/coinChange1.cpp $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange1.cpp -o $@
-
-
-
-# Command: make coinChange2
-coinChange2Objs := $(OBJ)/coinChange2.o
-
-coinChange2: $(coinChange2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange2 $(coinChange2Objs)
-
-$(OBJ)/coinChange2.o: $(SRC)/coinChange2.cpp $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange2.cpp -o $@
-
-
-
-# Command: make coinChange3
-coinChange3Objs := $(OBJ)/coinChange3.o
-
-coinChange3: $(coinChange3Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange3 $(coinChange3Objs)
-
-$(OBJ)/coinChange3.o: $(SRC)/coinChange3.cpp $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange3.cpp -o $@
-
-
-
-# Command: make coinChange4
-coinChange4Objs := $(OBJ)/coinChange4.o
-
-coinChange4: $(coinChange4Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange4 $(coinChange4Objs)
-
-$(OBJ)/coinChange4.o: $(SRC)/coinChange4.cpp $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange4.cpp -o $@
+# Irish.o, Student.o, and Faculty.o are already created in make Inherit
 	
 
 # Make all
-all: fibOld fibMemo steps
+all: IrishTest Inherit Inherit2
 
 
 # make initialize

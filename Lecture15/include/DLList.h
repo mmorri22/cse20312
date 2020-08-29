@@ -479,42 +479,6 @@ class DLList{
 
 		   return output;
 		}
-		
-		
-		void deleteDuplicates(){
-			
-			node* curr;
-			std::unordered_map<T, bool> theHash;
-
-			if ( IsEmpty() )
-			{
-				std::cout << "The list is empty" << std::endl;;
-			}
-			else{
-				
-				/* set the current pointer to the first
-				** node of the list */
-				curr = head;
-				
-				/* Until the end of the list */
-				while (curr != NULL){
-					
-					if(theHash.count( curr->data ) == 0){
-						
-						theHash.insert( {curr->data, true} );
-						
-					}
-					else{
-						
-						// Will delete the first instance
-						Delete( curr->data );
-					}
-					
-					// Iterate to the next node
-					curr = curr->next;
-				}
-			}
-		}
 
 };
 

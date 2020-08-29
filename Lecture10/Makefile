@@ -1,86 +1,147 @@
 # Author: Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for the CSE 24312 - Lecture 08 - Part 2
+# This is the Makefile for the CSE 24312 course Lecture 07 - Part 1
 
 # G++ is for the GCC compiler for C++
 PP := g++
 
 # CXXFLAGS are the compiler flages for when we compile C++ code in this course 
 FLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror 
-CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
+CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS) 
 
-# Variables for Folders
+
 INC := include
 SRC := src
 OBJ := obj
 EXE := exe
 
 
-# Command: make IrishTest
-# Base class for First Inheritance Example
-IrishTestObjs := $(OBJ)/IrishTest.o $(OBJ)/Irish.o 
+# Command: make switch
+switchObjs := $(OBJ)/switch.o
 
-IrishTest: $(IrishTestObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/IrishTest $(IrishTestObjs)
-	$(EXE)/./IrishTest
+switch: $(switchObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/switch $(switchObjs)
+	$(EXE)/./switch
 
-$(OBJ)/IrishTest.o: $(SRC)/IrishTest.cpp $(INC)/Irish.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/IrishTest.cpp -o $@
-
-$(OBJ)/Irish.o: $(INC)/Irish.cpp $(INC)/Irish.h
-	$(PP) $(CXXFLAGS) -c $(INC)/Irish.cpp -o $@
+$(OBJ)/switch.o: $(SRC)/switch.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/switch.cpp -o $@
 
 
 
-# Command: make Inherit 
-# Derived Classes for First Inheritance Example 
-InheritObjs := $(OBJ)/Inherit.o $(OBJ)/Faculty.o $(OBJ)/Student.o $(OBJ)/Irish.o
+# Command: make LPTest1
+LPTest1Objs := $(OBJ)/LPTest1.o
 
-Inherit: $(InheritObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/Inherit $(InheritObjs)
-	$(EXE)/./Inherit
+LPTest1: $(LPTest1Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest1 $(LPTest1Objs)
+	$(EXE)/./LPTest1
 
-# Inherit.cpp class both derived classes
-$(OBJ)/Inherit.o: $(SRC)/Inherit.cpp $(INC)/Student.h $(INC)/Faculty.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/Inherit.cpp -o $@
+$(OBJ)/LPTest1.o: $(SRC)/LPTest1.cpp $(INC)/LinearProbe1.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest1.cpp -o $@
 
-# Faculty inherits Irish
-$(OBJ)/Faculty.o: $(INC)/Faculty.cpp $(INC)/Faculty.h $(INC)/Irish.h
-	$(PP) $(CXXFLAGS) -c $(INC)/Faculty.cpp -o $@
 
-# Student inherits Irish
-$(OBJ)/Student.o: $(INC)/Student.cpp $(INC)/Student.h $(INC)/Irish.h
-	$(PP) $(CXXFLAGS) -c $(INC)/Student.cpp -o $@
 
-# Irish.o is already created in the Base Class
+# Command: make LPTest2
+LPTest2Objs := $(OBJ)/LPTest2.o
+
+LPTest2: $(LPTest2Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest2 $(LPTest2Objs)
+	$(EXE)/./LPTest2
+
+$(OBJ)/LPTest2.o: $(SRC)/LPTest2.cpp $(INC)/LinearProbe2.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest2.cpp -o $@
+
+
+
+# Command: make LPTest3
+LPTest3Objs := $(OBJ)/LPTest3.o
+
+LPTest3: $(LPTest3Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest3 $(LPTest3Objs)
+	$(EXE)/./LPTest3
+
+$(OBJ)/LPTest3.o: $(SRC)/LPTest3.cpp $(INC)/LinearProbe3.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest3.cpp -o $@
+
+
+
+# Command: make LPTest4
+LPTest4Objs := $(OBJ)/LPTest4.o
+
+LPTest4: $(LPTest4Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest4 $(LPTest4Objs)
+	$(EXE)/./LPTest4
+
+$(OBJ)/LPTest4.o: $(SRC)/LPTest4.cpp $(INC)/LinearProbe4.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest4.cpp -o $@
+
+
+# Command: make LPTest5
+LPTest5Objs := $(OBJ)/LPTest5.o
+
+LPTest5: $(LPTest5Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest5 $(LPTest5Objs)
+	$(EXE)/./LPTest5
+
+$(OBJ)/LPTest5.o: $(SRC)/LPTest5.cpp $(INC)/LinearProbe5.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest5.cpp -o $@
+
+
+# Command: make LPTest6
+LPTest6Objs := $(OBJ)/LPTest6.o
+
+LPTest6: $(LPTest6Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest6 $(LPTest6Objs)
+	$(EXE)/./LPTest6
+
+$(OBJ)/LPTest6.o: $(SRC)/LPTest6.cpp $(INC)/LinearProbe6.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest6.cpp -o $@
+
+
+# Command: make LPTest7
+LPTest7Objs := $(OBJ)/LPTest7.o
+
+LPTest7: $(LPTest7Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest7 $(LPTest7Objs)
+	$(EXE)/./LPTest7
+
+$(OBJ)/LPTest7.o: $(SRC)/LPTest7.cpp $(INC)/LinearProbe7.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest7.cpp -o $@
+
+
+# Command: make LPTest8
+LPTest8Objs := $(OBJ)/LPTest8.o
+
+LPTest8: $(LPTest8Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest8 $(LPTest8Objs)
+	$(EXE)/./LPTest8
+
+$(OBJ)/LPTest8.o: $(SRC)/LPTest8.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest8.cpp -o $@
 	
 
 
-# Command: make Inherit2
-# Example of this object in Inheritance Example 
-Inherit2Objs := $(OBJ)/Inherit2.o $(OBJ)/Faculty.o $(OBJ)/Student.o $(OBJ)/Irish.o
+# Command: make LPTest
+LPTestObjs := $(OBJ)/LPTest.o
 
-Inherit2: $(Inherit2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/Inherit2 $(Inherit2Objs)
-	$(EXE)/./Inherit2
+LPTest: $(LPTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/LPTest $(LPTestObjs)
+	$(EXE)/./LPTest
 
-# Inherit.cpp class both derived classes
-$(OBJ)/Inherit2.o: $(SRC)/Inherit2.cpp $(INC)/Student.h $(INC)/Faculty.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/Inherit2.cpp -o $@
-
-# Irish.o, Student.o, and Faculty.o are already created in make Inherit
+$(OBJ)/LPTest.o: $(SRC)/LPTest.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest.cpp -o $@
 	
-
-# Make all
-all: IrishTest Inherit Inherit2
-
 
 # make initialize
 # Will be called by grader to initialize your objects and executables folders
 
 initialize: 
 	mkdir objects executables
+	
+
+
+# Make all
+all: sol_1 sol_2 sol_3 sol Product1 Product2
 
 # Make clean
 clean :

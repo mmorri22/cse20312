@@ -1,7 +1,7 @@
 # Author: Matthew Morrison
 # E-mail: matt.morrison@nd.edu
 #
-# This is the Makefile for the CSE 20312 - Lecture 12
+# This is the Makefile for the CSE 20312 - Lecture 11
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -17,125 +17,94 @@ OBJ := obj
 EXE := exe
 
 
-# Command: make countSort1
-countSort1Objs := $(OBJ)/countSort1.o
+# Command: make fibOld
+fibOldObjs := $(OBJ)/fibOld.o
 
-countSort1: $(countSort1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/countSort1 $(countSort1Objs)
-	$(EXE)/./countSort1
+fibOld: $(fibOldObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/fibOld $(fibOldObjs)
 
-$(OBJ)/countSort1.o: $(SRC)/countSort1.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/countSort1.cpp -o $@
-
-
-
-# Command: make countSort2
-countSort2Objs := $(OBJ)/countSort2.o
-
-countSort2: $(countSort2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/countSort2 $(countSort2Objs)
-	$(EXE)/./countSort2
-
-$(OBJ)/countSort2.o: $(SRC)/countSort2.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/countSort2.cpp -o $@
+$(OBJ)/fibOld.o: $(SRC)/fibOld.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/fibOld.cpp -o $@
 	
-
-# Command: make countSort3
-countSort3Objs := $(OBJ)/countSort3.o
-
-countSort3: $(countSort3Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/countSort3 $(countSort3Objs)
-	$(EXE)/./countSort3
-
-$(OBJ)/countSort3.o: $(SRC)/countSort3.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/countSort3.cpp -o $@
 	
+# Command: make fibMemo
+fibMemoObjs := $(OBJ)/fibMemo.o
 
-# Command: make countSort
-countSortObjs := $(OBJ)/countSort.o
+fibMemo: $(fibMemoObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/fibMemo $(fibMemoObjs)
 
-countSort: $(countSortObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/countSort $(countSortObjs)
-	$(EXE)/./countSort
-
-$(OBJ)/countSort.o: $(SRC)/countSort.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/countSort.cpp -o $@
+$(OBJ)/fibMemo.o: $(SRC)/fibMemo.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/fibMemo.cpp -o $@
 
 
 
-# Command: make countSortImpr1
-countSortImpr1Objs := $(OBJ)/countSortImpr1.o
+# Command: make steps
+stepsObjs := $(OBJ)/steps.o
 
-countSortImpr1: $(countSortImpr1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/countSortImpr1 $(countSortImpr1Objs)
-	$(EXE)/./countSortImpr1
+steps: $(stepsObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/steps $(stepsObjs)
 
-$(OBJ)/countSortImpr1.o: $(SRC)/countSortImpr1.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/countSortImpr1.cpp -o $@
-
-
-
-# Command: make countSortImpr2
-countSortImpr2Objs := $(OBJ)/countSortImpr2.o
-
-countSortImpr2: $(countSortImpr2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/countSortImpr2 $(countSortImpr2Objs)
-	$(EXE)/./countSortImpr2
-
-$(OBJ)/countSortImpr2.o: $(SRC)/countSortImpr2.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/countSortImpr2.cpp -o $@
+$(OBJ)/steps.o: $(SRC)/steps.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/steps.cpp -o $@
 
 
 
-# Command: make countSortImpr
-countSortImprObjs := $(OBJ)/countSortImpr.o
+# Command: make coinChange
+coinChangeObjs := $(OBJ)/coinChange.o
 
-countSortImpr: $(countSortImprObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/countSortImpr $(countSortImprObjs)
-	$(EXE)/./countSortImpr
+coinChange: $(coinChangeObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange $(coinChangeObjs)
 
-$(OBJ)/countSortImpr.o: $(SRC)/countSortImpr.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/countSortImpr.cpp -o $@
-
-
-
-# Command: make countSortSTL
-countSortSTLObjs := $(OBJ)/countSortSTL.o
-
-countSortSTL: $(countSortSTLObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/countSortSTL $(countSortSTLObjs)
-	$(EXE)/./countSortSTL
-
-$(OBJ)/countSortSTL.o: $(SRC)/countSortSTL.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/countSortSTL.cpp -o $@
+$(OBJ)/coinChange.o: $(SRC)/coinChange.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange.cpp -o $@
 
 
 
-# Command: make sepChain
-sepChainObjs := $(OBJ)/sepChain.o
+# Command: make coinChange1
+coinChange1Objs := $(OBJ)/coinChange1.o
 
-sepChain: $(sepChainObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/sepChain $(sepChainObjs)
-	$(EXE)/./sepChain
+coinChange1: $(coinChange1Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange1 $(coinChange1Objs)
 
-$(OBJ)/sepChain.o: $(SRC)/sepChain.cpp $(INC)/DynArr.h $(INC)/LinearProbe.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/sepChain.cpp -o $@
-
+$(OBJ)/coinChange1.o: $(SRC)/coinChange1.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange1.cpp -o $@
 
 
-# Command: make bucketSort
-bucketSortObjs := $(OBJ)/bucketSort.o
 
-bucketSort: $(bucketSortObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/bucketSort $(bucketSortObjs)
-	$(EXE)/./bucketSort
+# Command: make coinChange2
+coinChange2Objs := $(OBJ)/coinChange2.o
 
-$(OBJ)/bucketSort.o: $(SRC)/bucketSort.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/bucketSort.cpp -o $@
+coinChange2: $(coinChange2Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange2 $(coinChange2Objs)
+
+$(OBJ)/coinChange2.o: $(SRC)/coinChange2.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange2.cpp -o $@
+
+
+
+# Command: make coinChange3
+coinChange3Objs := $(OBJ)/coinChange3.o
+
+coinChange3: $(coinChange3Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange3 $(coinChange3Objs)
+
+$(OBJ)/coinChange3.o: $(SRC)/coinChange3.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange3.cpp -o $@
+
+
+
+# Command: make coinChange4
+coinChange4Objs := $(OBJ)/coinChange4.o
+
+coinChange4: $(coinChange4Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/coinChange4 $(coinChange4Objs)
+
+$(OBJ)/coinChange4.o: $(SRC)/coinChange4.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/coinChange4.cpp -o $@
 	
 
 # Make all
-all: countSort1 countSort1
+all: fibOld fibMemo steps
 
 
 # make initialize

@@ -24,7 +24,7 @@ void printArray( DynArr<int>& theArray ){
 }
 
 
-int maxSubArrayProdDyn( DynArr<int>& array) 
+int maxSubArrayProdDyn( DynArr<int>& array ) 
 { 
     
     int globalMaximum = 1;  /* The Global Maximum */ 
