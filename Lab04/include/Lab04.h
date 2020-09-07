@@ -69,13 +69,14 @@ int min( int& value1, int& value2 ){
 
 VECTOR< VECTOR<int> > insert( VECTOR< VECTOR<int> >& intervals, VECTOR <int>& newInterval) {
 	
-	VECTOR < VECTOR <int> > solution;
+	VECTOR < VECTOR <int> > solution;	// Contains the Final Intervals
 	
 	intervals.push_back( newInterval );
 	
-	std::sort(intervals.begin(),intervals.end(), cmp);
+	std::sort(intervals.begin(),intervals.end(), cmp);	// std::sort sorts the intervals
 	
 	solution.push_back(intervals[0]);
+	
 	long unsigned int index = 1;
 	
 	while(index < intervals.size()){
@@ -92,10 +93,8 @@ VECTOR< VECTOR<int> > insert( VECTOR< VECTOR<int> >& intervals, VECTOR <int>& ne
 		}
 		
 		index++;
-		
 	}
 
-	
 	return solution;
 }
 

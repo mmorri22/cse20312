@@ -60,6 +60,25 @@ void test3(){
 
 }
 
+void test4(){
+	
+	COUT << "-------------------------" << ENDL;
+	COUT << "Test 4: " << ENDL;
+	
+	VECTOR< VECTOR<int> > v = { {7,12}, {3,5}, {1,2}, {5,6}, {8,14} };
+	VECTOR<int> v1 = {9, 22};
+	
+	COUT << "Inputs: " << ENDL;
+	COUT << "Intervals: ";
+	printVecVec( v );
+	COUT << "Input Interval: ";
+	printVector( v1 );
+	
+	COUT << ENDL << "Solution: " << ENDL;
+	printVecVec( insert(v, v1) );	
+
+}
+
 int main(){
 	
 	test1();
@@ -67,6 +86,8 @@ int main(){
 	test2();
 	
 	test3();
+	
+	test4();
 
 	return 0;
 	
