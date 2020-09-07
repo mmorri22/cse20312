@@ -27,7 +27,7 @@ int main(){
 	
 	/* Get the largest number, which is the number of buckets */
 	int largestNum = 0;
-	for(unsigned int iter = 0; iter < theVals.length(); iter++){
+	for(unsigned int iter = 0; iter < theVals.size(); iter++){
 		
 		if(theVals[iter] > largestNum){
 			largestNum = theVals[iter];
@@ -44,7 +44,7 @@ int main(){
 	
 	/* Implement the counting sort */
 	/* Increment each bucket when it is hashed */
-	for(unsigned int iter = 0; iter < theVals.length(); iter++){
+	for(unsigned int iter = 0; iter < theVals.size(); iter++){
 		
 		countSort[ theVals[iter] ]++;
 		

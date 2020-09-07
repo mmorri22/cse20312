@@ -21,11 +21,11 @@ class SorDynArr : public DynArr<T>{
 		
 		void Insert(const T& value){
 			
-			if( this->size == 0 ){
+			if( this->length == 0 ){
 				this->capac = 1;
 			}
 			
-			if(this->size >= this->capac){
+			if(this->length >= this->capac){
 				
 				this->capac = this->capac * 2;
 			}
@@ -34,7 +34,7 @@ class SorDynArr : public DynArr<T>{
 			
 			unsigned int sort_iter = 0, iter = 0;
 			
-			while( iter < this->size && value > this->data[iter] ){
+			while( iter < this->length && value > this->data[iter] ){
 				
 				tmp[sort_iter++] = this->data[iter++];
 				
@@ -42,11 +42,11 @@ class SorDynArr : public DynArr<T>{
 			
 			tmp[sort_iter++] = value;
 			
-			while( iter < this->size ){
+			while( iter < this->length ){
 				tmp[sort_iter++] = this->data[iter++];
 			}
 			
-			this->size++;
+			this->length++;
 			delete [] this->data;
 			this->data = tmp;
 			
@@ -61,7 +61,7 @@ class SorDynArr : public DynArr<T>{
 		********************************************/
 		friend std::ostream& operator<<( std::ostream& output, const SorDynArr<T>& theList ){
 			
-			for(unsigned int iter = 0; iter < theList.size; iter++){
+			for(unsigned int iter = 0; iter < theList.size(); iter++){
 				
 				std::cout << theList.data[iter] << " ";
 			}
