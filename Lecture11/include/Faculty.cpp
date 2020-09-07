@@ -47,7 +47,7 @@ void Faculty::printInformation(){
 	std::cout	<< " (" << this->ndID << ")" << (char)10;
 	std::cout << "Home Address: " << this->homeAddress << "\n";
 	
-	// No need for this-> since getTRACK and dept are not derived
+	// No need for this-> since getTRACK and dept are not derived from Irish
 	std::cout << "Track: " << getTRACK() << std::endl;
 	std::cout << "Department: " << dept << std::endl;
 	

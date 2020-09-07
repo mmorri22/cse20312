@@ -88,7 +88,7 @@ int main(int argc, char**argv){
 	/* Call the recursive function */
 	int result = coins( stepNum, coinVals );
 	
-	if( result == 2147483647 ){
+	if( result == -1 ){
 		
 		std::cout << -1 << std::endl;
 		

@@ -55,7 +55,7 @@ int main(){
 	
 	/* Get the largest number, which is the number of buckets */
 	int largestNum = 0;
-	for(unsigned int iter = 0; iter < theVals.length(); iter++){
+	for(unsigned int iter = 0; iter < theVals.size(); iter++){
 		
 		if( countSort.contains( theVals[iter] )  ){
 			

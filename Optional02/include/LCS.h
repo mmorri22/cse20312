@@ -68,20 +68,12 @@ unsigned int LCS( STRING& string1, STRING& string2 ){
 				if( matrix[ iter ][ jter + 1 ] > matrix[ iter + 1 ][ jter ] ){
 					
 					matrix[iter + 1][ jter + 1 ] = matrix[ iter ][ jter + 1 ];
-					
 				}
 				else{
 					
 					matrix[iter + 1][ jter + 1 ] = matrix[ iter + 1 ][ jter ];
 				}
-				//}
-				//else{
-					
-					//matrix[iter + 1][ jter + 1 ] = matrix[ iter + 1 ][ jter ];
-				//}
-				
 			}
-		
 		}
 	}
 	

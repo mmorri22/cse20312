@@ -11,9 +11,16 @@
 
 void TwoSums( std::vector<int>& theValue, int target ){
 	
-	COUT << "Target is " << target << "... ";
+	COUT << "Target is " << target << ", Array = ";
 	
-	std::unordered_map<int, int> theHash;
+	for( long unsigned int iter = 0; iter < theValue.size(); iter++ ){
+		
+		COUT << theValue.at(iter) << " ";
+	}
+	
+	COUT << ENDL;
+	
+	std::unordered_map<int, long unsigned int> theHash;
 	
 	for( long unsigned int iter = 0; iter < theValue.size(); iter++ ){
 		

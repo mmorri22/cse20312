@@ -130,6 +130,29 @@ LPTest: $(LPTestObjs)
 
 $(OBJ)/LPTest.o: $(SRC)/LPTest.cpp $(INC)/LinearProbe.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/LPTest.cpp -o $@
+
+
+
+# Command: make countSortSTL
+countSortSTLObjs := $(OBJ)/countSortSTL.o
+
+countSortSTL: $(countSortSTLObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/countSortSTL $(countSortSTLObjs)
+	$(EXE)/./countSortSTL
+
+$(OBJ)/countSortSTL.o: $(SRC)/countSortSTL.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/countSortSTL.cpp -o $@
+	
+	
+# Command: make countSortImpr
+countSortImprObjs := $(OBJ)/countSortImpr.o
+
+countSortImpr: $(countSortImprObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/countSortImpr $(countSortImprObjs)
+	$(EXE)/./countSortImpr
+
+$(OBJ)/countSortImpr.o: $(SRC)/countSortImpr.cpp $(INC)/LinearProbe.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/countSortImpr.cpp -o $@	
 	
 
 # make initialize

@@ -1,5 +1,6 @@
 #include "Student.h"
 
+
 Student::Student(std::string lastIn, std::string firstIn, unsigned int ndIDIn, CLASS classIn) 
 	: 	Irish(lastIn, firstIn, ndIDIn), 
 		stuClass(classIn), 
