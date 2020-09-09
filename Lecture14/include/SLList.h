@@ -10,151 +10,14 @@
 #ifndef SLLIST_H
 #define SLLIST_H
 
-#include <cstdlib>
-#include <iostream>
+#include "SLLNode.h"
 
 template<class T>
 class SLList{
 	
 	private:
-	
-		/* NODE contains the data and a pointer to the next node */
-		struct node
-		{
-			T     data;
-			node* next;
-			
-			/********************************************
-			* Function Name  : checkMemory
-			* Pre-conditions : none
-			* Post-conditions: none
-			* 
-			* Checks to see if the *this pointer is 
-			* pointing to a valid memory location.
-			* Terminates program if not to prevent stack overfloe 
-			********************************************/
-			void checkMemory(){
-				
-				if (this == NULL)
-				{
-					std::cerr <<  "Out of Memory" << std::endl;
-					exit (-1);
-				} 
-				
-			}
-			
-			/********************************************
-			* Function Name  : node
-			* Pre-conditions : none
-			* Post-conditions: none
-			* 
-			* Node Struct Default Constructor 
-			********************************************/
-			node() : data(), next(NULL) {
-				
-				// Check to ensure address properly allocated
-				checkMemory();
-				
-			}
-			
-			
-			/********************************************
-			* Function Name  : node
-			* Pre-conditions : none
-			* Post-conditions: none
-			* 
-			* Node Struct Overloaded Constructor with data input 
-			********************************************/
-			node(T dataIn) : data(dataIn), next(NULL) {
-				
-				// Check to ensure address properly allocated				
-				checkMemory();
-				
-			}
-			
-
-			/********************************************
-			* Function Name  : ~node
-			* Pre-conditions : none
-			* Post-conditions: none
-			*  
-			* Delete operator required for PQC since it contains a 
-			* private member which is a pointer
-			********************************************/
-			~node(){
-				
-				delete next;
-				
-			}
-			
-
-			/********************************************
-			* Function Name  : node
-			* Pre-conditions : const node& copy
-			* Post-conditions: none
-			*  
-			* Rule of 3: Copy Constructor
-			* Required for -weffc++ flag
-			********************************************/
-			node(const node& copy){
-				data = copy.data;
-				next = copy.next;
-			}
-			
-			
-			/********************************************
-			* Function Name  : operator=
-			* Pre-conditions : const node& assign
-			* Post-conditions: node&
-			*
-			* Rule of 3: Assignment Operator
-			* Required for -weffc++ flag 
-			********************************************/
-			node& operator=(const node& assign){
-				
-				if(this != &assign){
-					this->data = assign.data;
-					this->next = assign.next;
-				}
-				return *this;
-			}
-			
-			
-			/********************************************
-			* Function Name  : operator=
-			* Pre-conditions : const node* assign
-			* Post-conditions: node*
-			* 
-			* Assignment Operator for Pointer
-			* Required for pointer assignment in SLList
-			********************************************/
-			node* operator=(const node* assign){
-				
-				if(this != (void *)&assign){
-					this->data = assign->data;
-					this->next = assign->next;
-				}
-				return *this;
-			}
-			
-			
-			/********************************************
-			* Function Name  : operator!=
-			* Pre-conditions : const node* rhs
-			* Post-conditions: bool
-			*  
-			* != Operator for Pointer
-			* Required for pointer comparison in SLList
-			********************************************/
-			bool operator!=(const node* rhs){
-				
-				return this != (void *)&rhs;
-				
-			}
-			
-		};
 		
-		node* head;	// Head pointer for Singly-Linked List
+		node<T>* head;	// Head pointer for Singly-Linked List
 		
 	public:
 	
@@ -201,8 +64,8 @@ class SLList{
 		********************************************/
 		SLList(const SLList<T>& copy) : head(NULL) {
 			
-			node* prev = NULL;
-			node* curr = copy.head;
+			node<T>* prev = NULL;
+			node<T>* curr = copy.head;
 			
 			while(curr != NULL){
 				
@@ -226,8 +89,8 @@ class SLList{
 				
 			if(this != &assign){
 				
-				node* prev = NULL;
-				node* curr = assign.head;
+				node<T>* prev = NULL;
+				node<T>* curr = assign.head;
 				
 				while(curr != NULL){
 					
@@ -252,7 +115,7 @@ class SLList{
 		********************************************/
 		void Insert (T value)
 		{
-		   node* temp = new node(value);
+		   node<T>* temp = new node<T>(value);
 
 		   if ( IsEmpty() )
 		   {
@@ -260,8 +123,8 @@ class SLList{
 		   }
 		   else
 		   {
-			  node* prev =  NULL;
-			  node* curr = head;
+			  node<T>* prev =  NULL;
+			  node<T>* curr = head;
 
 			  /* traverse the list until the end */
 			  while (curr != NULL)
@@ -287,7 +150,7 @@ class SLList{
 		void push_front(T value){
 			
 			// Create new node
-			node* temp = new node(value);
+			node<T>* temp = new node<T>(value);
 			
 			// Set temp->next = head
 			temp -> next = head;
@@ -308,7 +171,7 @@ class SLList{
 		********************************************/
 		bool Delete (T target)
 		{
-		   node* temp = new node(); node* prev = new node(); node* curr = new node();
+		   node<T>* temp = new node<T>(); node<T>* prev = new node<T>(); node<T>* curr = new node<T>();
 
 		   if (IsEmpty ())
 		   {
@@ -384,8 +247,8 @@ class SLList{
 			}
 			else{
 				
-				node* prev =  NULL;
-				node* curr = head;
+				node<T>* prev =  NULL;
+				node<T>* curr = head;
 				
 				while (curr != NULL && curr -> data != searchVal){
 					prev = curr;
@@ -406,7 +269,7 @@ class SLList{
 		********************************************/
 		friend std::ostream& operator<<( std::ostream& output, const SLList<T>& theList ){
 			
-		   node* curr;
+		   node<T>* curr;
 
 		   if (theList.IsEmpty())
 		   {
