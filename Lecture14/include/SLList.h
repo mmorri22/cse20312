@@ -171,7 +171,9 @@ class SLList{
 		********************************************/
 		bool Delete (T target)
 		{
-		   node<T>* temp = new node<T>(); node<T>* prev = new node<T>(); node<T>* curr = new node<T>();
+		   node<T>* temp = new node<T>(); 
+		   node<T>* prev = new node<T>(); 
+		   node<T>* curr = new node<T>();
 
 		   if (IsEmpty ())
 		   {

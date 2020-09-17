@@ -13,8 +13,10 @@
 template<class T>
 void printValues(std::forward_list<T>& theList){
 	std::cout << "The elements are : "; 
+	
     for (T& a : theList) 
         std::cout << a << " "; 
+	
     std::cout << std::endl; 
 }
 

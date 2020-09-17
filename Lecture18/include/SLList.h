@@ -1,5 +1,5 @@
 /**********************************************
-* File: DLList.h
+* File: SLList.h
 * Author: Matthew Morrison
 * Email: matt.morrison@nd.edu
 * 
@@ -7,15 +7,14 @@
 * structs for a Linked List Data structure 
 **********************************************/
 
-#ifndef DLLIST_H
-#define DLLIST_H
+#ifndef SLLIST_H
+#define SLLIST_H
 
 #include <cstdlib>
 #include <iostream>
-#include <unordered_map>
 
 template<class T>
-class DLList{
+class SLList{
 	
 	private:
 	
@@ -24,7 +23,6 @@ class DLList{
 		{
 			T     data;
 			node* next;
-			node* prev;
 			
 			/********************************************
 			* Function Name  : checkMemory
@@ -52,7 +50,7 @@ class DLList{
 			* 
 			* Node Struct Default Constructor 
 			********************************************/
-			node() : data(), next(NULL), prev(NULL) {
+			node() : data(), next(NULL) {
 				
 				// Check to ensure address properly allocated
 				checkMemory();
@@ -67,7 +65,7 @@ class DLList{
 			* 
 			* Node Struct Overloaded Constructor with data input 
 			********************************************/
-			node(T dataIn) : data(dataIn), next(NULL), prev(NULL) {
+			node(T dataIn) : data(dataIn), next(NULL) {
 				
 				// Check to ensure address properly allocated				
 				checkMemory();
@@ -101,7 +99,6 @@ class DLList{
 			node(const node& copy){
 				data = copy.data;
 				next = copy.next;
-				prev = copy.prev;
 			}
 			
 			
@@ -118,7 +115,6 @@ class DLList{
 				if(this != &assign){
 					this->data = assign.data;
 					this->next = assign.next;
-					this->prev = assign.prev;
 				}
 				return *this;
 			}
@@ -130,14 +126,13 @@ class DLList{
 			* Post-conditions: node*
 			* 
 			* Assignment Operator for Pointer
-			* Required for pointer assignment in DLList
+			* Required for pointer assignment in SLList
 			********************************************/
 			node* operator=(const node* assign){
 				
 				if(this != (void *)&assign){
 					this->data = assign->data;
 					this->next = assign->next;
-					this->prev = assign->prev;
 				}
 				return *this;
 			}
@@ -149,7 +144,7 @@ class DLList{
 			* Post-conditions: bool
 			*  
 			* != Operator for Pointer
-			* Required for pointer comparison in DLList
+			* Required for pointer comparison in SLList
 			********************************************/
 			bool operator!=(const node* rhs){
 				
@@ -160,51 +155,58 @@ class DLList{
 		};
 		
 		node* head;	// Head pointer for Singly-Linked List
-		node* tail; // Tail point for Doubly-Linked List
 		
 	public:
 	
 		/********************************************
-		* Function Name  : DLList
+		* Function Name  : SLList
 		* Pre-conditions : none
 		* Post-conditions: none
 		* 
-		* DLList Default Constructor 
+		* SLList Default Constructor 
 		********************************************/
-		DLList() : head(NULL), tail(NULL) {}
+		SLList() : head(NULL) {}
 		
 		
 		/********************************************
-		* Function Name  : ~DLList
+		* Function Name  : ~SLList
 		* Pre-conditions : none
 		* Post-conditions: none
 		* 
 		* Singly Linked List Destructor 
 		********************************************/
-		~DLList(){
+		~SLList(){
 			
+			/*node* prev = NULL;
+			node* curr = head;
+				
+			while(curr != NULL){
+					
+				prev = curr;
+				curr = curr->next;
+					
+				delete prev;
+			}*/
 			delete head;
-			// delete tail;
+			
 		}
 		
 		
 		/********************************************
-		* Function Name  : DLList
-		* Pre-conditions : const DLList<T>& copy
+		* Function Name  : SLList
+		* Pre-conditions : const SLList<T>& copy
 		* Post-conditions: none
 		* 
 		* Copy Constructor for Singly Linked List 
 		********************************************/
-		DLList(const DLList<T>& copy) : head(NULL), tail(NULL) {
+		SLList(const SLList<T>& copy) : head(NULL) {
 			
-			node* prev = NULL;
 			node* curr = copy.head;
 			
 			while(curr != NULL){
 				
 				Insert(curr->data);
 					
-				prev = curr;
 				curr = curr->next;
 				
 			}
@@ -213,23 +215,21 @@ class DLList{
 	
 		/********************************************
 		* Function Name  : operator=
-		* Pre-conditions : const DLList<T>& assign
-		* Post-conditions: DLList<T>&
+		* Pre-conditions : const SLList<T>& assign
+		* Post-conditions: SLList<T>&
 		* 
 		* Assignment Operator for Singly Linked List 
 		********************************************/
-		DLList<T>& operator=(const DLList<T>& assign){
+		SLList<T>& operator=(const SLList<T>& assign){
 				
 			if(this != &assign){
 				
-				node* prev = NULL;
 				node* curr = assign.head;
 				
 				while(curr != NULL){
 					
 					this->Insert(curr->data);
 						
-					prev = curr;
 					curr = curr->next;
 					
 				}
@@ -253,7 +253,6 @@ class DLList{
 		   if ( IsEmpty() )
 		   {
 			   head = temp;
-			   tail = temp;
 		   }
 		   else
 		   {
@@ -269,12 +268,6 @@ class DLList{
 		  
 			  /* insert the node, temp, at the end */
 			  prev -> next = temp;
-			  
-			  /* Allocate the previous node */
-			  prev -> next -> prev = prev;
-			  
-			  /* Allocate tail */
-			  tail = prev -> next;
 		   }
 		}
 		
@@ -297,27 +290,6 @@ class DLList{
 			
 			// Set head equal to temp
 			head = temp;
-			
-		}
-		
-		
-		void push_back(T value){
-			
-			if( IsEmpty() ){
-				Insert( value );
-			}
-			else{
-				
-				node* temp = new node(value);
-				
-				temp->prev = tail;
-				
-				tail->next = temp;
-				
-				tail = temp;
-				
-			}
-			
 			
 		}
 
@@ -343,23 +315,10 @@ class DLList{
 		   /* if the target value is the first in the list, move head */
 		   else if (target == head -> data)
 		   {
-			   
-			   if( head == tail ){
-				   temp = head;
-				   head = NULL;
-				   tail = NULL;
-				   free(temp);
-				   return true;
-			   }
-			   else{
-			   
-				  temp = head;
-				  head = head -> next;
-				  head->prev = NULL;
-				  free (temp);
-				  return true;
-			  
-			   }
+			  temp = head;
+			  head = head -> next;
+			  free (temp);
+			  return true;
 		   }
 		   
 		   /* traverse the list until the target value is found */
@@ -378,19 +337,8 @@ class DLList{
 			  {
 				/* delete the node the contains the target value */
 				temp = curr;
-				
-				if(curr == tail){
-					tail = prev;
-				}
-				
 				prev -> next = curr -> next;
 				free(temp);
-				
-				if(prev->next != NULL){
-					
-					prev->next->prev = prev;
-				}
-				
 				return true;
 			  }
 			  else
@@ -399,6 +347,31 @@ class DLList{
 				return false;
 			  }
 		   }      
+		}
+		
+		bool pop_front(){
+
+		   if (IsEmpty ())
+		   {
+			  std::cout << "Can't delete from an empty list" << std::endl;
+			  return (-1);
+		   }
+
+		   /* if the target value is the first in the list, move head */
+		   else
+		   {
+				node* temp = head;
+				head = head -> next;
+				free (temp);
+				return true;
+		   }
+			
+		}
+		
+		T front() const{
+			
+			return head->data;
+			
 		}
 
 
@@ -411,7 +384,7 @@ class DLList{
 		********************************************/
 		bool IsEmpty () const{
 			
-			return head == NULL && tail == NULL;
+			return head == NULL;
 		   
 		}
 		
@@ -447,12 +420,12 @@ class DLList{
 
 		/********************************************
 		* Function Name  : operator<<
-		* Pre-conditions : std::ostream& output, const DLList<T>& theList 
+		* Pre-conditions : std::ostream& output, const SLList<T>& theList 
 		* Post-conditions: std::ostream&
 		* 
-		* Overloaded friend ostream operator for DLList 
+		* Overloaded friend ostream operator for SLList 
 		********************************************/
-		friend std::ostream& operator<<( std::ostream& output, const DLList<T>& theList ){
+		friend std::ostream& operator<<( std::ostream& output, const SLList<T>& theList ){
 			
 		   node* curr;
 

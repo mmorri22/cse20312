@@ -184,7 +184,7 @@ class DLList{
 		~DLList(){
 			
 			delete head;
-			// delete tail;
+
 		}
 		
 		
@@ -196,15 +196,13 @@ class DLList{
 		* Copy Constructor for Singly Linked List 
 		********************************************/
 		DLList(const DLList<T>& copy) : head(NULL), tail(NULL) {
-			
-			node* prev = NULL;
+
 			node* curr = copy.head;
 			
 			while(curr != NULL){
 				
 				Insert(curr->data);
 					
-				prev = curr;
 				curr = curr->next;
 				
 			}
@@ -318,6 +316,49 @@ class DLList{
 				
 			}
 			
+			
+		}
+		
+		bool pop_front(){
+
+			if (IsEmpty ())
+			{
+			  std::cout << "Can't delete from an empty list" << std::endl;
+			  return (-1);
+			}
+
+			/* The Target IS the Head */
+			node* temp = new node();
+			
+			if( head == tail ){
+			   temp = head;
+			   head = NULL;
+			   tail = NULL;
+			   free(temp);
+			   return true;
+			}
+			else{
+
+			  temp = head;
+			  head = head -> next;
+			  head->prev = NULL;
+			  free (temp);
+			  return true;
+
+			}
+			
+		}
+		
+		T front() const{
+			
+			return head->data;
+			
+		}
+		
+		
+		T back() const{
+			
+			return tail->data;
 			
 		}
 
@@ -478,6 +519,42 @@ class DLList{
 		   } 
 
 		   return output;
+		}
+		
+		
+		void deleteDuplicates(){
+			
+			node* curr;
+			std::unordered_map<T, bool> theHash;
+
+			if ( IsEmpty() )
+			{
+				std::cout << "The list is empty" << std::endl;;
+			}
+			else{
+				
+				/* set the current pointer to the first
+				** node of the list */
+				curr = head;
+				
+				/* Until the end of the list */
+				while (curr != NULL){
+					
+					if(theHash.count( curr->data ) == 0){
+						
+						theHash.insert( {curr->data, true} );
+						
+					}
+					else{
+						
+						// Will delete the first instance
+						Delete( curr->data );
+					}
+					
+					// Iterate to the next node
+					curr = curr->next;
+				}
+			}
 		}
 
 };

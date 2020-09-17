@@ -9,7 +9,7 @@ template< class T >
 struct node
 {
 	T     data;
-	node* next;
+	node<T>* next;
 	
 	/********************************************
 	* Function Name  : checkMemory
@@ -83,7 +83,7 @@ struct node
 	* Rule of 3: Copy Constructor
 	* Required for -weffc++ flag
 	********************************************/
-	node(const node& copy){
+	node(const node<T>& copy){
 		data = copy.data;
 		next = copy.next;
 	}
@@ -97,7 +97,7 @@ struct node
 	* Rule of 3: Assignment Operator
 	* Required for -weffc++ flag 
 	********************************************/
-	node& operator=(const node& assign){
+	node<T>& operator=(const node<T>& assign){
 		
 		if(this != &assign){
 			this->data = assign.data;
@@ -115,7 +115,7 @@ struct node
 	* Assignment Operator for Pointer
 	* Required for pointer assignment in SLList
 	********************************************/
-	node* operator=(const node* assign){
+	node<T>* operator=(const node<T>* assign){
 		
 		if(this != (void *)&assign){
 			this->data = assign->data;
@@ -133,7 +133,7 @@ struct node
 	* != Operator for Pointer
 	* Required for pointer comparison in SLList
 	********************************************/
-	bool operator!=(const node* rhs){
+	bool operator!=(const node<T>* rhs){
 		
 		return this != (void *)&rhs;
 		

@@ -18,6 +18,18 @@ EXE := exe
 OBJ := obj
 
 
+# Command: make inigo
+# std::list example
+inigoObjs :=  $(OBJ)/inigo.o
+
+inigo: $(inigoObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/inigo $(inigoObjs)
+	$(EXE)/./inigo
+
+$(OBJ)/inigo.o: $(SRC)/inigo.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/inigo.cpp -o $@	
+
+
 # Command: make RemoveDups
 # Solution to Problem 1 from Lecture 20
 RemoveDupsObjs :=  $(OBJ)/RemoveDups.o
