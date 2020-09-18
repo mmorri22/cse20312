@@ -68,10 +68,10 @@ int main(){
 	dllist2.Insert(5);
 	dllist2.Insert(6);
 	dllist2.Insert(7);
-	//dllist2.Insert(7);
-	//dllist2.Insert(13);
-	//dllist2.Insert(14);
-	//dllist2.Insert(15);	
+	dllist2.Insert(7);
+	dllist2.Insert(13);
+	dllist2.Insert(14);
+	dllist2.Insert(15);	
 	mergeLists(dllist1, dllist2);
 	
 	return 0;

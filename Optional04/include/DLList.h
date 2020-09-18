@@ -596,7 +596,8 @@ class DLList{
 						
 						second_curr = second_next;
 					}
-					else if( first_curr->data < second_curr->data && first_next->data >= second_curr->data ){
+					else if( first_curr->data < second_curr->data 
+						&& first_next->data >= second_curr->data ){
 						
 						first_curr->next = second_curr;
 						second_curr->prev = first_curr;

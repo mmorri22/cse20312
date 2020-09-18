@@ -29,6 +29,7 @@ $(OBJ)/wrapperQueue.o: $(SRC)/wrapperQueue.cpp $(INC)/queue.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/wrapperQueue.cpp -o $@
 	
 
+
 # Command: make wrapperStack
 wrapperStackObjs :=  $(OBJ)/wrapperStack.o
 
@@ -36,9 +37,70 @@ wrapperStack: $(wrapperStackObjs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/wrapperStack $(wrapperStackObjs)
 	$(EXE)/./wrapperStack
 
-$(OBJ)/wrapperStack.o: $(SRC)/wrapperStack.cpp $(INC)/queue.h
+$(OBJ)/wrapperStack.o: $(SRC)/wrapperStack.cpp $(INC)/stack.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/wrapperStack.cpp -o $@
+
+
+
+# Command: make wrapperStack
+stackTestObjs :=  $(OBJ)/stackTest.o
+
+stackTest: $(stackTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/stackTest $(stackTestObjs)
+	$(EXE)/./stackTest
+
+$(OBJ)/stackTest.o: $(SRC)/stackTest.cpp $(INC)/stack.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/stackTest.cpp -o $@	
+
+
+# Command: make shortestPath1
+shortestPath1Objs :=  $(OBJ)/shortestPath1.o
+
+shortestPath1: $(shortestPath1Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/shortestPath1 $(shortestPath1Objs)
+	$(EXE)/./shortestPath1
+
+$(OBJ)/shortestPath1.o: $(SRC)/shortestPath1.cpp $(INC)/queue.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/shortestPath1.cpp -o $@
+
+
+
+# Command: make shortestPath2
+shortestPath2Objs :=  $(OBJ)/shortestPath2.o
+
+shortestPath2: $(shortestPath2Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/shortestPath2 $(shortestPath2Objs)
+	$(EXE)/./shortestPath2
+
+$(OBJ)/shortestPath2.o: $(SRC)/shortestPath2.cpp $(INC)/queue.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/shortestPath2.cpp -o $@
+
+
+
+# Command: make shortestPath3
+shortestPath3Objs :=  $(OBJ)/shortestPath3.o
+
+shortestPath3: $(shortestPath3Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/shortestPath3 $(shortestPath3Objs)
+	$(EXE)/./shortestPath3
+
+$(OBJ)/shortestPath3.o: $(SRC)/shortestPath3.cpp $(INC)/queue.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/shortestPath3.cpp -o $@
 	
+	
+
+
+# Command: make shortestPath
+shortestPathObjs :=  $(OBJ)/shortestPath.o
+
+shortestPath: $(shortestPathObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/shortestPath $(shortestPathObjs)
+	$(EXE)/./shortestPath
+
+$(OBJ)/shortestPath.o: $(SRC)/shortestPath.cpp $(INC)/queue.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/shortestPath.cpp -o $@
+
+
 	
 
 # make initialize
