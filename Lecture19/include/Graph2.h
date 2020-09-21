@@ -1,5 +1,5 @@
-#ifndef GRAPH1_H
-#define GRAPH1_H
+#ifndef GRAPH2_H
+#define GRAPH2_H
 
 #include "Vertex.h"
 #include "DynArr.h"
