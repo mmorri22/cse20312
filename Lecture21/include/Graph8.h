@@ -397,7 +397,104 @@ class Graph{
 			
 			return TopSortGraph;
 		}
-		
+
+		// Dijkstra's Algorithm
+		void Dijkstra( unsigned int destin ){
+			
+			
+			if( destin >= vertices.length() || vertices.length() == 0 ){
+				
+				std::cout << "Invalid Inputs" << std::endl;
+				return;
+				
+			}
+			
+			/* Initialize the Elements */
+			stack< unsigned int > theStack;
+			DynArr< unsigned int > parents( vertices.length() );
+			DynArr< int > distance;
+			stack< unsigned int > finalPath;
+			
+			bool found = false;
+			
+			/* Initialize the origin */
+			theStack.push( 0 );
+			distance[0] = 0;
+			parents[0] = -1;
+			
+			if( destin == 0 ){	
+				found = true;
+			}
+			
+			if( !found ){
+				
+				/* Initialize all the distances after the origin */
+				for( unsigned int iter = 1; iter < vertices.length(); iter++ ){
+					// Make it the largest possible int
+					distance[ iter ] = 2147483647;
+					// Set the parent to -1
+					parents[ iter ] = -1;
+				}
+				
+				/* Run the shortest path algorithm */
+				while( !theStack.empty() ){
+					
+					// Get the top element of the stack and pop
+					unsigned int index = theStack.top();
+					theStack.pop();
+					
+					// Evaluate the edges from the vertex 
+					for(unsigned int iter = 0; iter < vertices[ index ].num_edges(); iter++ ){
+						
+						// Obtain the edge
+						Edge tempEdge = vertices[ index ].get_edge( iter );
+						
+						// If the weight of the edge plus distance of the  distance is less than the destin weight
+						if( distance[ index ] + tempEdge.weight < distance[ tempEdge.destin ] ) {
+							
+							// Update the distance
+							distance[ tempEdge.destin ] = distance[ index ] + tempEdge.weight;
+							
+							// Update the parent of the destin 
+							parents[ tempEdge.destin ] = index;
+							
+							// Check if destin is the result;
+							if( tempEdge.destin == destin && !found ){
+								
+								found = true;
+							}
+							
+							theStack.push( tempEdge.destin );
+						}
+					}
+				}
+			}
+			
+			// Otherwise, go through the parents until we find the origin
+			if( found ){
+				
+				unsigned int sentinel = destin;	
+				finalPath.push( sentinel );		// Push the desination onto the stack
+				
+				while( parents[sentinel] != -1 ){
+					
+					finalPath.push( parents[sentinel] );	// Push the parent onto the stack
+					sentinel = parents[sentinel];			// Update the sentinel
+					
+				}
+				
+				// Stack contains the correct order 
+				std::cout << "The valid Dijkstra path from 0 to " << destin << " is: ";
+				while( !finalPath.empty() ){
+					
+					std::cout << finalPath.top() << " ";
+					finalPath.pop();
+				}
+				std::cout << ", and the distance is " << distance[destin] << std::endl;
+				std::cout << std::endl;		
+			}
+			
+		}		
 		
 		void BFS( unsigned int destin ){
 			

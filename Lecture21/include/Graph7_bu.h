@@ -3,6 +3,7 @@
 
 #include "Vertex.h"
 #include "DynArr.h"
+#include "queue.h"
 #include "stack.h"
 #include <iostream>
 
@@ -371,17 +372,17 @@ class Graph{
 			
 			// Create a stack to store the final path
 			stack< unsigned int > finalPath;
+
+			// Initialize the search	
+			parents[ 0 ] = -1;
 			
 			// Set all the visited elements to false
 			for( unsigned int iter = 0; iter < vertices.length(); iter++ ){
 				visited[iter] = false;
-				parents[iter] = -1;
 			}
 			
-			// Run the Topological Sort - We must check every element 
-			for(unsigned int iter = 0; iter < vertices.length(); iter++ ){
-				TopSort( iter, parents, visited );
-			}
+			// Run the Topological Sort
+			TopSort( 0, parents, visited );
 			
 			// Add all the edges from the parent to the Graph 
 			for( unsigned int iter = 1; iter < vertices.length(); iter++ ){
@@ -398,102 +399,121 @@ class Graph{
 		}
 		
 		
-		// Dijkstra's Algorithm
-		void Dijkstra( unsigned int destin ){
+		void BFS( unsigned int destin ){
 			
-			
-			if( destin >= vertices.length() || vertices.length() == 0 ){
+			// If Graph can't be search, inform user and return 
+			// destin cannot be greater than the number of vertices
+			// The number of vertices must not be 0
+			if( destin >= vertices.length() || vertices.length() == 0){
 				
-				std::cout << "Invalid Inputs" << std::endl;
+				std::cout << destin << " is not a valid vertex location" << std::endl;
+				
 				return;
-				
 			}
 			
-			/* Initialize the Elements */
-			stack< unsigned int > theStack;
-			DynArr< unsigned int > parents( vertices.length() );
-			DynArr< int > distance;
+			/* Create elements for the search */
+			
+			// queue to store the next vertex to evaluate
+			queue< unsigned int > theQueue;
+			
+			// Keeping track if the vertex has been visited. Set all initially to false
+			bool* visited = new bool[vertices.length()];
+			for( unsigned int iter = 0; iter < vertices.length(); iter++ ){
+				
+				visited[iter] = false;
+			}
+			
+			// Keeping track of the parents 
+			unsigned int* parents = new unsigned int[vertices.length()];
+			
+			// Use this stack for the final path
 			stack< unsigned int > finalPath;
 			
-			bool found = false;
+			/* Initialize the search */
+			bool found = false; 
 			
-			/* Initialize the origin */
-			theStack.push( 0 );
-			distance[0] = 0;
+			// Push the origin onto the Queue
+			theQueue.push(0);
+			
+			// The origin has no parent, and the origin has been visited
 			parents[0] = -1;
 			
-			if( destin == 0 ){	
+			// Set found to true if the origin is the destination
+			if( destin == 0 ){
 				found = true;
 			}
 			
-			if( !found ){
+			// While the element is not found and the queue is not empty
+			while( !found && !theQueue.empty() ){
 				
-				/* Initialize all the distances after the origin */
-				for( unsigned int iter = 1; iter < vertices.length(); iter++ ){
-					// Make it the largest possible int
-					distance[ iter ] = 2147483647;
-					// Set the parent to -1
-					parents[ iter ] = -1;
-				}
+				// First step in BFS is to obtain and remove the front element from the queue 
+				unsigned int vertex = theQueue.front();
+				theQueue.pop();
 				
-				/* Run the shortest path algorithm */
-				while( !theStack.empty() ){
+				// Mark the vertex as visited
+				visited[ vertex ] = true;
+				
+				// Iterate through each edge 
+				for( unsigned int iter = 0; iter < vertices[ vertex ].num_edges(); iter++){
 					
-					// Get the top element of the stack and pop
-					unsigned int index = theStack.top();
-					theStack.pop();
+					// Get the destination from the edge
+					unsigned int edgeDestin = vertices[ vertex ].get_edge( iter ).destin;
 					
-					// Evaluate the edges from the vertex 
-					for(unsigned int iter = 0; iter < vertices[ index ].num_edges(); iter++ ){
+					// If the edge's destination matches our destination, we found the node
+					if( edgeDestin == destin ){
 						
-						// Obtain the edge
-						Edge tempEdge = vertices[ index ].get_edge( iter );
+						found = true;
 						
-						// If the weight of the edge plus distance of the  distance is less than the destin weight
-						if( distance[ index ] + tempEdge.weight < distance[ tempEdge.destin ] ) {
-							
-							// Update the distance
-							distance[ tempEdge.destin ] = distance[ index ] + tempEdge.weight;
-							
-							// Update the parent of the destin 
-							parents[ tempEdge.destin ] = index;
-							
-							// Check if destin is the result;
-							if( tempEdge.destin == destin && !found ){
-								
-								found = true;
-							}
-							
-							theStack.push( tempEdge.destin );
-						}
+						// Mark the destination's parent as vertex 
+						parents[ edgeDestin ] = vertex;
+						
+						break;
+					}
+					
+					// If the destination has not been visited
+					else if( visited[ edgeDestin ] == false ) {
+						
+						// Push the destination onto the queue
+						theQueue.push( edgeDestin );
+						
+						// Mark edgeDestin's parent as vertex
+						parents[ edgeDestin ] = vertex;
+						
+						// Mark visited as true
+						visited[ edgeDestin ] = true;
+
 					}
 				}
+
+			}
+			
+			// If we have not found the node, there is no path
+			if( !found ){
+				
+				std::cout << "No valid path from origin to " << destin << std::endl;
+				return;
 			}
 			
 			// Otherwise, go through the parents until we find the origin
-			if( found ){
+			unsigned int sentinel = destin;	
+			finalPath.push( sentinel );		// Push the desination onto the stack
+			
+			while( parents[sentinel] != -1 ){
 				
-				unsigned int sentinel = destin;	
-				finalPath.push( sentinel );		// Push the desination onto the stack
+				finalPath.push( parents[sentinel] );	// Push the parent onto the stack
 				
-				while( parents[sentinel] != -1 ){
-					
-					finalPath.push( parents[sentinel] );	// Push the parent onto the stack
-					sentinel = parents[sentinel];			// Update the sentinel
-					
-				}
+				sentinel = parents[sentinel];			// Update the sentinel
 				
-				// Stack contains the correct order 
-				std::cout << "The valid Dijkstra path from 0 to " << destin << " is: ";
-				while( !finalPath.empty() ){
-					
-					std::cout << finalPath.top() << " ";
-					finalPath.pop();
-				}
-				std::cout << ", and the distance is " << distance[destin] << std::endl;
-				std::cout << std::endl;		
 			}
 			
+			// Stack contains the correct order 
+			std::cout << "The valid BFS path from the 0 to " << destin << " is: ";
+			while( !finalPath.empty() ){
+				
+				std::cout << finalPath.top() << " ";
+				finalPath.pop();
+			}
+			std::cout << std::endl;
 		}
 
 		

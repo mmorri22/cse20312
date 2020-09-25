@@ -12,6 +12,17 @@ INC := include
 SRC := src
 EXE := exe
 OBJ := obj
+
+# Command: make Dijkstra
+# Initial Examples of Dijkstra
+DijkstraObjs := $(OBJ)/Dijkstra.o 
+
+Dijkstra: $(DijkstraObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/Dijkstra $(DijkstraObjs)
+	$(EXE)/./Dijkstra
+
+$(OBJ)/Dijkstra.o: $(SRC)/Dijkstra.cpp $(INC)/Graph7.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/Dijkstra.cpp -o $@
 	
 	
 # Command: make BFS
