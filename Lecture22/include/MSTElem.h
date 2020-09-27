@@ -11,29 +11,24 @@ struct MSTElem{
 	MSTElem( unsigned int indexIn, int weightIn ) : index( indexIn ), weight( weightIn ) {}
 	
 	bool operator>=( const MSTElem& rhs ) const{
-		return weight >= rhs.weight;
+		return weight < rhs.weight;
 	}
 	
 	bool operator>( const MSTElem& rhs ) const{
-		return weight > rhs.weight;
-	}
-	
-	bool operator<=( const MSTElem& rhs ) const{
 		return weight <= rhs.weight;
 	}
 	
+	bool operator<=( const MSTElem& rhs ) const{
+		return weight > rhs.weight;
+	}
+	
 	bool operator<( const MSTElem& rhs ) const{
-		return weight < rhs.weight;
+		return weight >= rhs.weight;
 	}
 	
 	bool operator==( const MSTElem& rhs ) const{
 		return weight == rhs.weight;
 	}
-
-	bool operator!=( const MSTElem& rhs ) const{
-		return weight != rhs.weight;
-	}
-	
 };
 
 #endif
