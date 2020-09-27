@@ -6,9 +6,8 @@
 template<class T>
 class DynArr{
 	
-		protected:
-		
-			unsigned int size; 	// Current number of elements
+		private:
+			unsigned int size; // Current number of elements
 			unsigned int capac; // Current capacity
 			T* data;
 			
@@ -25,21 +24,18 @@ class DynArr{
 		
 			DynArr(const int sizeIn = 0) :
 				size(sizeIn),
-				capac(sizeIn),
+				capac(sizeIn ? sizeIn : 8),
 				data(new T[capac]) {}
 				
-				
-			virtual ~DynArr(){
+			~DynArr(){
 				delete [] data;
 			}
-			
 			
 			DynArr(const DynArr<T>& C) : 
 				size(C.size), capac(C.capac), data(new T[capac])
 			{
 				copy(data, C.data, C.size);
 			}
-			
 			
 			DynArr<T>& operator=(const DynArr<T>& assign){
 				
@@ -72,7 +68,8 @@ class DynArr{
 			
 			const T& end() const{
 				
-				return data[size-1];
+				return data[size - 1];
+				
 			}	
 			
 			unsigned int length() const{
@@ -97,24 +94,11 @@ class DynArr{
 			void push_back(const T& value){
 				
 				if(size >= capac){
-					
-					if( size == 0 ){
-						
-						capac = 1;
-					}
-					
-					else{
-						capac = capac * 2;
-					}
-					
+					capac = capac * 2;
 					T* tmp = new T[capac];
-					
 					copy(tmp, data, size);
-					
 					delete [] data;
-					
 					data = tmp;
-					
 				}
 				
 				data[size] = value;
@@ -141,7 +125,7 @@ class DynArr{
 				T* tmp = new T[capac];
 				
 				unsigned int tmp_iter = 0;
-				for(unsigned int data_iter = 0; data_iter < size; ++data_iter){
+				for(unsigned int data_iter = 0; data_iter < capac; ++data_iter){
 					
 					if( data_iter != e ){
 						
@@ -149,7 +133,6 @@ class DynArr{
 						++tmp_iter;
 						
 					}
-					
 				}
 				
 				delete [] data;
@@ -158,16 +141,21 @@ class DynArr{
 
 			}
 			
-			friend std::ostream& operator<<( std::ostream& output, const DynArr<T>& theArray ){
+			friend std::ostream& operator<<(std::ostream& output, const DynArr<T>& array){
 				
-				for(unsigned int iter = 0; iter < theArray.size; iter++ ){
+				output << "{";
+				
+				for(unsigned int iter = 0; iter < array.size; iter++){
 					
-					std::cout << theArray[ iter ] << " ";
-					
+					output << array[iter] << ", ";
 				}
 				
+				output << "}";
+				
 				return output;
+				
 			}
+			
 	
 };
 
