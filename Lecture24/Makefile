@@ -1,4 +1,4 @@
-# This is the Makefile for the CSE 20312 course - Lecture 24
+# This is the Makefile for the CSE 20312 course - Lecture 25
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -14,107 +14,66 @@ EXE := exe
 OBJ := obj
 
 
-	
-# Command: make testBSTNode1
-# Initial Examples of BSTNode
-testBSTNode1Objs := $(OBJ)/testBSTNode1.o 
+# Command: make testBST6
+# Test Contains, Min, and Max
+testBST6Objs := $(OBJ)/testBST6.o 
 
-testBSTNode1: $(testBSTNode1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testBSTNode1 $(testBSTNode1Objs)
-	$(EXE)/./testBSTNode1
+testBST6: $(testBST6Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testBST6 $(testBST6Objs)
+	$(EXE)/./testBST6
 
-$(OBJ)/testBSTNode1.o: $(SRC)/testBSTNode1.cpp $(INC)/BSTNode1.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testBSTNode1.cpp -o $@
-
+$(OBJ)/testBST6.o: $(SRC)/testBST6.cpp $(INC)/BST6.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testBST6.cpp -o $@
 
 
-# Command: make testBSTNode2
-# Initial Examples of BSTNode with pointers
-# Deliberate Compiler Error
-testBSTNode2Objs := $(OBJ)/testBSTNode2.o 
+# Command: make testBST7
+# Test Delete 
+testBST7Objs := $(OBJ)/testBST7.o 
 
-testBSTNode2: $(testBSTNode2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testBSTNode2 $(testBSTNode2Objs)
-	$(EXE)/./testBSTNode2
+testBST7: $(testBST7Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testBST7 $(testBST7Objs)
+	$(EXE)/./testBST7
 
-$(OBJ)/testBSTNode2.o: $(SRC)/testBSTNode2.cpp $(INC)/BSTNode2.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testBSTNode2.cpp -o $@
+$(OBJ)/testBST7.o: $(SRC)/testBST7.cpp $(INC)/BST7.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testBST7.cpp -o $@
 
 
 
-# Command: make testBST1
-# Initial Examples of BST with pointers
-# Deliberate Compiler Error
-testBST1Objs := $(OBJ)/testBST1.o 
+# Command: make maxHeight
+# Test Max Height 
+maxHeightObjs := $(OBJ)/maxHeight.o 
 
-testBST1: $(testBST1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testBST1 $(testBST1Objs)
-	$(EXE)/./testBST1
+maxHeight: $(maxHeightObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/maxHeight $(maxHeightObjs)
+	$(EXE)/./maxHeight
 
-$(OBJ)/testBST1.o: $(SRC)/testBST1.cpp $(INC)/BST1.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testBST1.cpp -o $@
-
-
-# Command: make testBST2Bad
-# Shows the student that pointers need to be 
-# called by reference
-testBST2BadObjs := $(OBJ)/testBST2Bad.o 
-
-testBST2Bad: $(testBST2BadObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testBST2Bad $(testBST2BadObjs)
-	$(EXE)/./testBST2Bad
-
-$(OBJ)/testBST2Bad.o: $(SRC)/testBST2Bad.cpp $(INC)/BST2Bad.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testBST2Bad.cpp -o $@
-
-
-# Command: make testBST2
-# Initial Examples of BST with pointers
-testBST2Objs := $(OBJ)/testBST2.o 
-
-testBST2: $(testBST2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testBST2 $(testBST2Objs)
-	$(EXE)/./testBST2
-
-$(OBJ)/testBST2.o: $(SRC)/testBST2.cpp $(INC)/BST2.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testBST2.cpp -o $@
-
-
-# Command: make testBST3
-# Prints Pre-Order with the In-Order
-testBST3Objs := $(OBJ)/testBST3.o 
-
-testBST3: $(testBST3Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testBST3 $(testBST3Objs)
-	$(EXE)/./testBST3
-
-$(OBJ)/testBST3.o: $(SRC)/testBST3.cpp $(INC)/BST3.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testBST3.cpp -o $@	
-
-
-
-# Command: make testBST4
-# Prints Pre-Order with the In-Order
-testBST4Objs := $(OBJ)/testBST4.o 
-
-testBST4: $(testBST4Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testBST4 $(testBST4Objs)
-	$(EXE)/./testBST4
-
-$(OBJ)/testBST4.o: $(SRC)/testBST4.cpp $(INC)/BST4.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testBST4.cpp -o $@
+$(OBJ)/maxHeight.o: $(SRC)/maxHeight.cpp $(INC)/BST7.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/maxHeight.cpp -o $@
 	
 	
-# Command: make testBST5
-# Prints Pre-Order with the In-Order
-testBST5Objs := $(OBJ)/testBST5.o 
+# Command: make testAVL1
+# Test AVL Tree - 1
+testAVL1Objs := $(OBJ)/testAVL1.o 
 
-testBST5: $(testBST5Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testBST5 $(testBST5Objs)
-	$(EXE)/./testBST5
+testAVL1: $(testAVL1Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testAVL1 $(testAVL1Objs)
+	$(EXE)/./testAVL1
 
-$(OBJ)/testBST5.o: $(SRC)/testBST5.cpp $(INC)/BST5.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testBST5.cpp -o $@
+$(OBJ)/testAVL1.o: $(SRC)/testAVL1.cpp $(INC)/AVLTree1.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testAVL1.cpp -o $@
+
+
+
+# Command: make testAVL
+# Test AVL Tree - With Full Balance
+testAVLObjs := $(OBJ)/testAVL.o 
+
+testAVL: $(testAVLObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testAVL $(testAVLObjs)
+	$(EXE)/./testAVL
+
+$(OBJ)/testAVL.o: $(SRC)/testAVL.cpp $(INC)/AVLTree.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testAVL.cpp -o $@
 	
 
 # Make all
