@@ -174,6 +174,21 @@ class Graph{
 			return false;
 		}
 		
+
+		int find_data_index( T vertexData ){
+			
+			for( unsigned int iter = 0; iter < vertices.size(); iter++ ){
+				
+				if( vertices[ iter ].get_vertex_value() == vertexData ){
+					
+					return (int)iter;
+				}
+				
+			}
+			
+			return -1;
+		}
+		
 		// Add Edge from Origin to Destination, with weight
 		void add_edge(unsigned int origin, unsigned int destin, int weight ){
 			if( origin < vertices.size() && destin < vertices.size() ){
@@ -214,7 +229,7 @@ class Graph{
 				
 			if( origin < vertices.size() && destin < vertices.size() ){
 				
-				for( unsigned int iter = 0; iter < vertices[origin].get_num_edges(); iter++ ){
+				for( unsigned int iter = 0; iter < vertices[origin].num_edges(); iter++ ){
 					
 					// If the edge's destination is equal to the requested destin
 					if( vertices[origin].get_edge( iter ).destin == destin ){

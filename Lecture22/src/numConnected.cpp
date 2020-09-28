@@ -49,7 +49,10 @@ void initializeGraph( Graph<int>& disjointSet ){
 
 void numConnectedComponents( Graph<int>& disjointSet ){
 	
-	COUT << ENDL << "The Graph contains " << disjointSet.numConnected();
+	COUT << ENDL << "The Graph contains "; 
+	
+	COUT << disjointSet.numConnected();
+	
 	COUT << " connected components." << ENDL;
 
 }

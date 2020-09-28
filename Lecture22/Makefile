@@ -39,6 +39,16 @@ $(OBJ)/MST2.o: $(SRC)/MST2.cpp $(INC)/Graph.h
 
 
 
+MST3Objs := $(OBJ)/MST3.o 
+
+MST3: $(MST3Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/MST2 $(MST3Objs)
+	$(EXE)/./MST2
+
+$(OBJ)/MST3.o: $(SRC)/MST3.cpp $(INC)/Graph.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/MST3.cpp -o $@
+
+
 # Command: make Connected
 ConnectedObjs := $(OBJ)/Connected.o 
 
