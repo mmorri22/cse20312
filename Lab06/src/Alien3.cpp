@@ -10,13 +10,9 @@
 int main(){
 	
 	DynArr < STRING > words;
-	
-	words.push_back( "wt" );
-	words.push_back( "wrf" );
-	words.push_back( "er" );
-	words.push_back( "ett" );
-	words.push_back( "eftt" );
-	words.push_back( "wer" );
+
+	words.push_back( "wt" );	
+	words.push_back( "werfghabit" );
 	
 	COUT << "Alien Words: ";
 	for( unsigned int iter = 0; iter < words.size(); iter++ ){
