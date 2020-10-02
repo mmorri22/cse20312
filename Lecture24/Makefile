@@ -14,6 +14,20 @@ EXE := exe
 OBJ := obj
 
 
+
+# Command: make testBST5
+# Test Level Order Traversal
+testBST5Objs := $(OBJ)/testBST5.o 
+
+testBST5: $(testBST5Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testBST5 $(testBST5Objs)
+	$(EXE)/./testBST5
+
+$(OBJ)/testBST5.o: $(SRC)/testBST5.cpp $(INC)/BST6.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testBST5.cpp -o $@
+	
+
+
 # Command: make testBST6
 # Test Contains, Min, and Max
 testBST6Objs := $(OBJ)/testBST6.o 
@@ -24,6 +38,7 @@ testBST6: $(testBST6Objs)
 
 $(OBJ)/testBST6.o: $(SRC)/testBST6.cpp $(INC)/BST6.h
 	$(PP) $(CXXFLAGS) -c $(SRC)/testBST6.cpp -o $@
+
 
 
 # Command: make testBST7
