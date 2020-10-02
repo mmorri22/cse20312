@@ -349,30 +349,32 @@ class BST{
 		
 		void kthSmallest( BSTNode< T >* currNode, T& kthValue, unsigned int& currValue, unsigned int kTh ){
 			
-			if( currNode->left != NULL ){
-				
-				currValue++;
-				
-				kthSmallest( currNode->left, kThValue, currValue, kTh );
-				
+			// Check for NULL pointer before doing anything else
+			if( currNode == NULL ){
+				return;
 			}
 			
-			// Now, do the current node 
+			// Recursively go left
+			// Only if currVale < kTh - Save unnecessary recursive calls
+			if( currNode->left != NULL && currValue < kTh ){
+				
+				kthSmallest( currNode->left, kthValue, currValue, kTh );
+			}
 			
+			// Now, do the current node - Increment currValue and compare with kTh
 			currValue++;
 			
+			// If we found the kTh element in the tree
 			if( currValue == kTh ){
 				
-				kthValue = currNode->data;
-				
+				kthValue = currNode->data;	// Set kth Value equal to currNode->data
 			}
 			
-			if( currNode->right != NULL ){
+			// Recursively go right 
+			// Only if currVale < kTh - Save unnecessary recursive calls
+			if( currNode->right != NULL && currValue < kTh ){
 				
-				currValue++;
-				
-				kthSmallest( currNode->right, kThValue, currValue, kTh );
-				
+				kthSmallest( currNode->right, kthValue, currValue, kTh );
 			}			
 		}
 		
@@ -495,10 +497,11 @@ class BST{
 				
 			}
 			
-			unsigned int currValue = 0
-			
+			// Create the variables to pass
+			unsigned int currValue = 0;
 			T kThValue;
 			
+			// Recursive call to Private kthSmallest
 			kthSmallest( root, kThValue, currValue, kTh );
 			
 			return kThValue;
