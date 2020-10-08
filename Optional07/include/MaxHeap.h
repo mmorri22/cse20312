@@ -1,5 +1,5 @@
-#ifndef MAXHEAP3_H
-#define MAXHEAP3_H
+#ifndef MAXHEAP_H
+#define MAXHEAP_H
 
 #include "DynArr.h"
 #include <iostream>
@@ -7,10 +7,10 @@
 template< class T >
 class MaxHeap{
 	
-	private:
+	protected:
 	
 		// Move an inserted element as high as it can go
-		void trickleUp( unsigned int heapLoc ){
+		virtual void trickleUp( unsigned int heapLoc ){
 			
 			if( heapLoc == 0 )
 				return;
@@ -35,12 +35,13 @@ class MaxHeap{
 				}
 
 			}
+			
 		}
 		
 		// Recursively trickle the element down 
-		void trickleDown( unsigned int prevVal, unsigned int nextVal ){
+		virtual void trickleDown( unsigned int prevVal, unsigned int nextVal ){
 			
-			if( nextVal == 0 ){
+			if( nextVal == 0 || nextVal >= heapArray.size() ){
 				return;
 			}
 			
@@ -65,27 +66,31 @@ class MaxHeap{
 				
 			}
 			
-
+			
+			
 			// Check left for improper issues 
 			if( heapArray[prevVal] < heapArray[2 * prevVal + 1] ){
 				
 				trickleDown( prevVal, 2 * prevVal + 1 );
 				
+				trickleDown( 2 * prevVal + 1, 4 * prevVal + 3 );
+				trickleDown( 2 * prevVal + 1, 4 * prevVal + 4 );
 			}
 			
 			// Check right for improper issues 
-			else if( 2 * prevVal + 2 < heapArray.length() ){
+			else if( 2 * prevVal + 2 < heapArray.size() ){
 				
 				if( heapArray[prevVal] < heapArray[2 * prevVal + 2] ){
 					
 					trickleDown( prevVal, 2 * prevVal + 2 );
+					
+					trickleDown( 2 * prevVal + 2, 4 * prevVal + 5 );
+					trickleDown( 2 * prevVal + 2, 4 * prevVal + 6 );
 				}
+				
 			}
 			
 		}
-
-
-		
 	
 		DynArr<T> heapArray;	// Dynamic Array to Maintain the Heap
 		
@@ -95,12 +100,12 @@ class MaxHeap{
 		MaxHeap() : heapArray() {}
 		
 		// Destructor
-		~MaxHeap() {}
+		virtual ~MaxHeap() {}
 		
 		// Copy Constructor
-		MaxHeap( const MaxHeap<T>& copy ) : heapArray( copy.length() ) {
+		MaxHeap( const MaxHeap<T>& copy ) : heapArray( copy.heapArray.size() ) {
 			
-			for( unsigned int iter = 0; iter < copy.heapArray.length(); iter++ ){
+			for( unsigned int iter = 0; iter < copy.heapArray.size(); iter++ ){
 				// We want the elements in the same order
 				heapArray.push_back( copy.heapArray[iter] );
 			}
@@ -110,7 +115,7 @@ class MaxHeap{
 		MaxHeap& operator=( const MaxHeap<T>& rhs ){
 			
 			if( this != &rhs ){
-				for( unsigned int iter = 0; iter < rhs.heapArray.length(); iter++ ){
+				for( unsigned int iter = 0; iter < rhs.heapArray.size(); iter++ ){
 					
 					this->heapArray.push_back( rhs.heapArray[iter] );
 				}				
@@ -125,12 +130,12 @@ class MaxHeap{
 			heapArray.push_back( element );
 			
 			// Promote the Element we just pushed back
-			trickleUp( heapArray.length() - 1 );
+			trickleUp( heapArray.size() - 1 );
 			
 		}
 		
 		// Return the element at the to
-		T top(){
+		T top() const{
 			
 			return heapArray[0];
 			
@@ -138,7 +143,7 @@ class MaxHeap{
 		
 		bool empty(){
 			
-			return heapArray.length() == 0;
+			return heapArray.size() == 0;
 			
 		}
 		
@@ -146,29 +151,38 @@ class MaxHeap{
 		void pop(){
 			
 			// Ensure we cannot pop from empty array
-			if( heapArray.length() == 0 ){
+			if( heapArray.size() == 0 ){
 				std::cout << "Cannot pop from empty array\n";
 				return;
 			}
 			
 			// Swap the first and last element 
-			heapArray[ 0 ] = heapArray[ heapArray.length() - 1 ];
-			heapArray.erase( heapArray.length() - 1 );
+			heapArray[ 0 ] = heapArray[ heapArray.size() - 1 ];
+			heapArray.erase( heapArray.size() - 1 );
 			
 			// Only trickle up if the length is greater than 1
-			if ( heapArray.length() > 1 ){
-			
-				trickleDown( heapArray.length() / 2 - 1, heapArray.length() - 1 );
+			if ( heapArray.size() > 1 ){
+				
+				//std::cout << "Start: " << heapArray[ heapArray.size() / 2 - 1 ] << " " << heapArray[ heapArray.size() - 1 ] << std::endl;
+				
+				trickleDown( heapArray.size() / 2 - 1, heapArray.size() - 1 );
 
 			}
-
+			
+		}
+		
+		// Returns the number of elements in the Heap
+		unsigned int size(){
+			
+			return heapArray.size();
 			
 		}
 	
 		// Overloaded friend operator<<
 		friend std::ostream& operator<<( std::ostream& output, const MaxHeap<T>& theHeap ){
 			
-			for(unsigned int iter = 0; iter < theHeap.heapArray.length(); iter++ ){
+			output << "Length = " << theHeap.heapArray.size() << ": ";
+			for(unsigned int iter = 0; iter < theHeap.heapArray.size(); iter++ ){
 				
 				output << theHeap.heapArray[ iter ] << " ";
 			}

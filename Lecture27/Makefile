@@ -1,4 +1,4 @@
-# This is the Makefile for the CSE 20312 course Lecture 26
+# This is the Makefile for the CSE 20312 course Lecture 27
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -15,54 +15,18 @@ OBJ := obj
 	
 	
 	
-# Command: make testMaxHeap1
-testMaxHeap1Objs := $(OBJ)/testMaxHeap1.o 
+# Command: make testMinHeap
+testMinHeapObjs := $(OBJ)/testMinHeap.o 
 
-testMaxHeap1: $(testMaxHeap1Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testMaxHeap1 $(testMaxHeap1Objs)
-	$(EXE)/./testMaxHeap1
+testMinHeap: $(testMinHeapObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testMinHeap $(testMinHeapObjs)
+	$(EXE)/./testMinHeap
 
-$(OBJ)/testMaxHeap1.o: $(SRC)/testMaxHeap1.cpp $(INC)/MaxHeap1.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testMaxHeap1.cpp -o $@
-
-
-
-# Command: make testMaxHeap2
-testMaxHeap2Objs := $(OBJ)/testMaxHeap2.o 
-
-testMaxHeap2: $(testMaxHeap2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testMaxHeap2 $(testMaxHeap2Objs)
-	$(EXE)/./testMaxHeap2
-
-$(OBJ)/testMaxHeap2.o: $(SRC)/testMaxHeap2.cpp $(INC)/MaxHeap2.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testMaxHeap2.cpp -o $@
+$(OBJ)/testMinHeap.o: $(SRC)/testMinHeap.cpp $(INC)/MinHeap.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testMinHeap.cpp -o $@
 
 
 
-# Command: make testMaxHeap3
-testMaxHeap3Objs := $(OBJ)/testMaxHeap3.o 
-
-testMaxHeap3: $(testMaxHeap3Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testMaxHeap3 $(testMaxHeap3Objs)
-	$(EXE)/./testMaxHeap3
-
-$(OBJ)/testMaxHeap3.o: $(SRC)/testMaxHeap3.cpp $(INC)/MaxHeap3.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/testMaxHeap3.cpp -o $@
-	
-	
-	
-# Command: make MaxHeapSort
-MaxHeapSortObjs := $(OBJ)/MaxHeapSort.o 
-
-MaxHeapSort: $(MaxHeapSortObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/MaxHeapSort $(MaxHeapSortObjs)
-	$(EXE)/./MaxHeapSort
-
-$(OBJ)/MaxHeapSort.o: $(SRC)/MaxHeapSort.cpp $(INC)/MaxHeap3.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/MaxHeapSort.cpp -o $@
-	
-	
-	
 # Command: make MinHeapSort
 MinHeapSortObjs := $(OBJ)/MinHeapSort.o 
 
@@ -100,14 +64,14 @@ $(OBJ)/FindKthLargest.o: $(SRC)/FindKthLargest.cpp $(INC)/MinHeap.h
 
 
 # Make all
-all: testMaxHeap1 testMaxHeap2
+all: testMinHeap MinHeapSort PQTest FindKthLargest
 
 
 
 # make initialize
 # Will be called by grader to initialize your objects and executables folders
 initialize: 
-	mkdir objects executables
+	mkdir $(OBJ) $(EXE)
 	
 
 # Make clean

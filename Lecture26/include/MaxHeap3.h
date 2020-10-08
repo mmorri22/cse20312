@@ -74,7 +74,7 @@ class MaxHeap{
 			}
 			
 			// Check right for improper issues 
-			else if( 2 * prevVal + 2 < heapArray.length() ){
+			else if( 2 * prevVal + 2 < heapArray.size() ){
 				
 				if( heapArray[prevVal] < heapArray[2 * prevVal + 2] ){
 					
@@ -98,9 +98,9 @@ class MaxHeap{
 		~MaxHeap() {}
 		
 		// Copy Constructor
-		MaxHeap( const MaxHeap<T>& copy ) : heapArray( copy.length() ) {
+		MaxHeap( const MaxHeap<T>& copy ) : heapArray( copy.size() ) {
 			
-			for( unsigned int iter = 0; iter < copy.heapArray.length(); iter++ ){
+			for( unsigned int iter = 0; iter < copy.heapArray.size(); iter++ ){
 				// We want the elements in the same order
 				heapArray.push_back( copy.heapArray[iter] );
 			}
@@ -110,7 +110,7 @@ class MaxHeap{
 		MaxHeap& operator=( const MaxHeap<T>& rhs ){
 			
 			if( this != &rhs ){
-				for( unsigned int iter = 0; iter < rhs.heapArray.length(); iter++ ){
+				for( unsigned int iter = 0; iter < rhs.heapArray.size(); iter++ ){
 					
 					this->heapArray.push_back( rhs.heapArray[iter] );
 				}				
@@ -125,7 +125,7 @@ class MaxHeap{
 			heapArray.push_back( element );
 			
 			// Promote the Element we just pushed back
-			trickleUp( heapArray.length() - 1 );
+			trickleUp( heapArray.size() - 1 );
 			
 		}
 		
@@ -138,7 +138,7 @@ class MaxHeap{
 		
 		bool empty(){
 			
-			return heapArray.length() == 0;
+			return heapArray.size() == 0;
 			
 		}
 		
@@ -146,19 +146,19 @@ class MaxHeap{
 		void pop(){
 			
 			// Ensure we cannot pop from empty array
-			if( heapArray.length() == 0 ){
+			if( heapArray.size() == 0 ){
 				std::cout << "Cannot pop from empty array\n";
 				return;
 			}
 			
 			// Swap the first and last element 
-			heapArray[ 0 ] = heapArray[ heapArray.length() - 1 ];
-			heapArray.erase( heapArray.length() - 1 );
+			heapArray[ 0 ] = heapArray[ heapArray.size() - 1 ];
+			heapArray.erase( heapArray.size() - 1 );
 			
 			// Only trickle up if the length is greater than 1
-			if ( heapArray.length() > 1 ){
+			if ( heapArray.size() > 1 ){
 			
-				trickleDown( heapArray.length() / 2 - 1, heapArray.length() - 1 );
+				trickleDown( heapArray.size() / 2 - 1, heapArray.size() - 1 );
 
 			}
 
@@ -168,7 +168,7 @@ class MaxHeap{
 		// Overloaded friend operator<<
 		friend std::ostream& operator<<( std::ostream& output, const MaxHeap<T>& theHeap ){
 			
-			for(unsigned int iter = 0; iter < theHeap.heapArray.length(); iter++ ){
+			for(unsigned int iter = 0; iter < theHeap.heapArray.size(); iter++ ){
 				
 				output << theHeap.heapArray[ iter ] << " ";
 			}

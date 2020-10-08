@@ -354,7 +354,7 @@ class BST{
 				return;
 			}
 			
-			// Recursively go left
+			// Recursively go left`
 			// Only if currVale < kTh - Save unnecessary recursive calls
 			if( currNode->left != NULL && currValue < kTh ){
 				

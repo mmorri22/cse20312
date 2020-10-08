@@ -101,6 +101,7 @@ class MinHeap : public MaxHeap<T>{
 		// Overloaded friend operator<<
 		friend std::ostream& operator<<( std::ostream& output, const MinHeap<T>& theHeap ){
 			
+			output << "Length = " << theHeap.heapArray.size() << ": ";
 			for(unsigned int iter = 0; iter < theHeap.heapArray.size(); iter++ ){
 				
 				output << theHeap.heapArray[ iter ] << " ";

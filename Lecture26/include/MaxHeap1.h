@@ -48,9 +48,9 @@ class MaxHeap{
 		~MaxHeap() {}
 		
 		// Copy Constructor
-		MaxHeap( const MaxHeap<T>& copy ) : heapArray( copy.length() ) {
+		MaxHeap( const MaxHeap<T>& copy ) : heapArray( copy.size() ) {
 			
-			for( unsigned int iter = 0; iter < copy.heapArray.length(); iter++ ){
+			for( unsigned int iter = 0; iter < copy.heapArray.size(); iter++ ){
 				// We want the elements in the same order
 				heapArray.push_back( copy.heapArray[iter] );
 			}
@@ -60,7 +60,7 @@ class MaxHeap{
 		MaxHeap& operator=( const MaxHeap<T>& rhs ){
 			
 			if( this != &rhs ){
-				for( unsigned int iter = 0; iter < rhs.heapArray.length(); iter++ ){
+				for( unsigned int iter = 0; iter < rhs.heapArray.size(); iter++ ){
 					
 					this->heapArray.push_back( rhs.heapArray[iter] );
 				}				
@@ -75,14 +75,14 @@ class MaxHeap{
 			heapArray.push_back( element );
 			
 			// Promote the Element we just pushed back
-			trickleUp( heapArray.length() - 1 );
+			trickleUp( heapArray.size() - 1 );
 			
 		}
 	
 		// Overloaded friend operator<<
 		friend std::ostream& operator<<( std::ostream& output, const MaxHeap<T>& theHeap ){
 			
-			for(unsigned int iter = 0; iter < theHeap.heapArray.length(); iter++ ){
+			for(unsigned int iter = 0; iter < theHeap.heapArray.size(); iter++ ){
 				
 				output << theHeap.heapArray[ iter ] << " ";
 			}
