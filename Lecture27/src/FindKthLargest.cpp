@@ -6,7 +6,7 @@
 #define ENDL std::endl
 
 template< class T >
-void findKthLargest( void* unsorted, MinHeap< T > heap, int kTh, int length ){
+void findKthLargest( void* unsorted, MinHeap< T >& heap, int kTh, int length ){
 	
 	if( kTh > length ){
 		
@@ -16,7 +16,6 @@ void findKthLargest( void* unsorted, MinHeap< T > heap, int kTh, int length ){
 	for( int iter = 0; iter < kTh; iter++ ){
 		
 		heap.push( *((int *)unsorted + iter ) );
-		
 	}
 	
 	for( int iter = kTh; iter < length; iter++ ){
@@ -25,13 +24,10 @@ void findKthLargest( void* unsorted, MinHeap< T > heap, int kTh, int length ){
 			
 			heap.pop();
 			heap.push( *((int *)unsorted + iter ) );
-			
 		}
-		
 	}
 	
 	COUT << "The " << kTh << "-th largest element is " << heap.top() << ENDL;
-	
 }
 
 int main() {

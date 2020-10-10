@@ -1,4 +1,4 @@
-# This is the Makefile for the CSE 24312 course - Lecture 15 - Part 2
+# This is the Makefile for the CSE 20312 course - Lecture 31
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -15,88 +15,61 @@ OBJ := obj
 
 
 	
-# Command: make TrieNodeTest
-# Initial Examples of Trie Node
-TrieNodeTestObjs := $(OBJ)/TrieNodeTest.o 
+# Command: make TreapInsert
+# Tests the Treap Insert Results
+TreapInsertObjs := $(OBJ)/TreapInsert.o 
 
-TrieNodeTest: $(TrieNodeTestObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/TrieNodeTest $(TrieNodeTestObjs)
-	$(EXE)/./TrieNodeTest
+TreapInsert: $(TreapInsertObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/TreapInsert $(TreapInsertObjs)
+	$(EXE)/./TreapInsert
 
-$(OBJ)/TrieNodeTest.o: $(SRC)/TrieNodeTest.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/TrieNodeTest.cpp -o $@
-
-
-
-# Command: make TrieTest
-# Initial Examples of Trie Node
-TrieTestObjs := $(OBJ)/TrieTest.o 
-
-TrieTest: $(TrieTestObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/TrieTest $(TrieTestObjs)
-	$(EXE)/./TrieTest
-
-$(OBJ)/TrieTest.o: $(SRC)/TrieTest.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/TrieTest.cpp -o $@
+$(OBJ)/TreapInsert.o: $(SRC)/TreapInsert.cpp $(INC)/Treap2.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/TreapInsert.cpp -o $@
 
 
+# Command: make InsertRandom
+# Tests the Treap Insert Results
+InsertRandomObjs := $(OBJ)/InsertRandom.o 
 
-# Command: make WordBreak
-WordBreakObjs := $(OBJ)/WordBreak.o 
+InsertRandom: $(InsertRandomObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/InsertRandom $(InsertRandomObjs)
+	$(EXE)/./InsertRandom
 
-WordBreak: $(WordBreakObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/WordBreak $(WordBreakObjs)
-	$(EXE)/./WordBreak $(SRC)/Dictionary.txt
+$(OBJ)/InsertRandom.o: $(SRC)/InsertRandom.cpp $(INC)/Treap3.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/InsertRandom.cpp -o $@
+	
+	
+# Command: make InsertRandom2
+# Tests height for 100 versions of 100 inserts
+InsertRandom2Objs := $(OBJ)/InsertRandom2.o 
 
-$(OBJ)/WordBreak.o: $(SRC)/WordBreak.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/WordBreak.cpp -o $@
+InsertRandom2: $(InsertRandom2Objs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/InsertRandom2 $(InsertRandom2Objs)
+	$(EXE)/./InsertRandom2
+
+$(OBJ)/InsertRandom2.o: $(SRC)/InsertRandom2.cpp $(INC)/Treap4.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/InsertRandom2.cpp -o $@
+	
+	
+# Command: make TreapTest
+# Tests the Treap Insert Results
+TreapTestObjs := $(OBJ)/TreapTest.o 
+
+TreapTest: $(TreapTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/TreapTest $(TreapTestObjs)
+	$(EXE)/./TreapTest
+
+$(OBJ)/TreapTest.o: $(SRC)/TreapTest.cpp $(INC)/Treap.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/TreapTest.cpp -o $@
 
 
-# Command: make testDynArr
-testDynArrObjs := $(OBJ)/testDynArr.o 
-
-testDynArr: $(testDynArrObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testDynArr $(testDynArrObjs)
-	$(EXE)/./testDynArr
-
-$(OBJ)/testDynArr.o: $(SRC)/testDynArr.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/testDynArr.cpp -o $@
-
+# Initialize 
+initialize:
+	mkdir $(OBJ) $(EXE)
 
 # Make all
-all: TrieNodeTest TrieTest WordBreak
-
-
-# make initialize
-# Will be called by grader to initialize your objects and executables folders
-initialize: 
-	mkdir objects executables
-
+all: SubsetSums BloomURL
 
 # Make clean
 clean :
 	rm -rf *.o $(OBJ)/* $(EXE)/*
-	
-	
-# Make gitPre
-gitPre:
-	make clean
-	git add Makefile $(SRC)/*
-	git commit -m "Lecture 37 Preview Assignment"
-	git push
-
-	
-# Make gitIn
-gitIn:
-	make clean
-	git add Makefile $(SRC)/*
-	git commit -m "Lecture 37 In Class"
-	git push
-	
-	
-# Make gitIn
-gitFix:
-	make clean
-	git add --all
-	git commit -m "Lecture 37 In Class - Fix"
-	git push

@@ -63,8 +63,21 @@ $(OBJ)/FindKthLargest.o: $(SRC)/FindKthLargest.cpp $(INC)/MinHeap.h
 
 
 
+# Command: make FindKMostFreq
+FindKMostFreqObjs := $(OBJ)/FindKMostFreq.o 
+
+FindKMostFreq: $(FindKMostFreqObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/FindKMostFreq $(FindKMostFreqObjs)
+	$(EXE)/./FindKMostFreq
+
+$(OBJ)/FindKMostFreq.o: $(SRC)/FindKMostFreq.cpp $(INC)/MinHeap.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/FindKMostFreq.cpp -o $@
+
+
+
+
 # Make all
-all: testMinHeap MinHeapSort PQTest FindKthLargest
+all: testMinHeap MinHeapSort PQTest FindKthLargest FindKMostFreq
 
 
 
