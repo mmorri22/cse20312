@@ -34,7 +34,7 @@ int main(){
 	std::cout << "Finding 'structure'" << std::endl;
 	// The function calling your code here
 	// Uncomment the next line, which will be your call 
-	inClass.printFoundNodes("struggle");
+	inClass.printFoundNodes("struggle bus");
 
 	return 0;
 }

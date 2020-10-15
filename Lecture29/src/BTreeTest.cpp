@@ -16,17 +16,25 @@ int main(){
 	theTree.insert(8);
 	theTree.printInOrder( std::cout );
 
-	//theTree.search(10);
-	//theTree.search(15);	
-	//theTree.search(4);
+	theTree.search(10);
+	theTree.search(15);	
+	theTree.search(4);
 
 	
-/*	theTree.insert(21);
+	theTree.insert(21);
 	theTree.insert(8);
 	theTree.insert(18);
 	theTree.insert(12);
 	theTree.insert(19);
-	theTree.insert(20); */
+	theTree.insert(20); 
+	
+	theTree.printInOrder( std::cout );
+	//theTree.remove(18);
+	theTree.remove(12);
+	theTree.insert(8);
+	//theTree.remove(21);
+	
+	theTree.printInOrder( std::cout );
 	
 	return 0;
 	
