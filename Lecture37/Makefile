@@ -1,4 +1,4 @@
-# This is the Makefile for the CSE 20312 course - Lecture 36
+# This is the Makefile for the CSE 20312 course - Lecture 38
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -15,35 +15,48 @@ OBJ := obj
 
 
 	
-# Command: make SubsetSums
-# Initial Examples of bitsets using Subset Sum problem
-SubsetSumsObjs := $(OBJ)/SubsetSums.o 
+# Command: make testBH
+# Tests the Treap Insert Results
+testBHObjs := $(OBJ)/testBH.o 
 
-SubsetSums: $(SubsetSumsObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/SubsetSums $(SubsetSumsObjs)
-	$(EXE)/./SubsetSums
+testBH: $(testBHObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testBH $(testBHObjs)
+	$(EXE)/./testBH
 
-$(OBJ)/SubsetSums.o: $(SRC)/SubsetSums.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/SubsetSums.cpp -o $@
+$(OBJ)/testBH.o: $(SRC)/testBH.cpp $(INC)/BinomialHeap.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testBH.cpp -o $@
 
 
-# Command: make BloomURL
-# Initial Examples of Bloom Filter
-BloomURLObjs := $(OBJ)/BloomURL.o 
 
-BloomURL: $(BloomURLObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/BloomURL $(BloomURLObjs)
-	$(EXE)/./BloomURL $(SRC)/Access_URLs.txt $(SRC)/NDCSE_URLs.txt
+# Command: make testPQ
+# Tests the Treap Insert Results
+testPQObjs := $(OBJ)/testPQ.o 
 
-$(OBJ)/BloomURL.o: $(SRC)/BloomURL.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/BloomURL.cpp -o $@
+testPQ: $(testPQObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testPQ $(testPQObjs)
+	$(EXE)/./testPQ
+
+$(OBJ)/testPQ.o: $(SRC)/testPQ.cpp $(INC)/PriorityQueue.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testPQ.cpp -o $@
+
+
+# Command: make PriorityTest
+# Tests the Treap Insert Results
+PriorityTestObjs := $(OBJ)/PriorityTest.o 
+
+PriorityTest: $(PriorityTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/PriorityTest $(PriorityTestObjs)
+	$(EXE)/./PriorityTest
+
+$(OBJ)/PriorityTest.o: $(SRC)/PriorityTest.cpp $(INC)/PriorityQueue.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/PriorityTest.cpp -o $@
 
 # Initialize 
 initialize:
 	mkdir $(OBJ) $(EXE)
 
 # Make all
-all: SubsetSums BloomURL
+all: testPQ testBH
 
 # Make clean
 clean :
