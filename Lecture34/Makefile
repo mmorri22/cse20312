@@ -1,4 +1,7 @@
-# This is the Makefile for the CSE 20312 course - Lecture 31
+# Author: Matthew Morrison
+# E-mail: matt.morrison@nd.edu
+#
+# This is the Makefile for the CSE 20312 course Lecture 30
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -14,62 +17,60 @@ EXE := exe
 OBJ := obj
 
 
-	
-# Command: make TreapInsert
-# Tests the Treap Insert Results
-TreapInsertObjs := $(OBJ)/TreapInsert.o 
+# Command: make SplayTest
+# Shows a successful Splay Tree Test
+SplayTestObjs := $(OBJ)/SplayTest.o
 
-TreapInsert: $(TreapInsertObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/TreapInsert $(TreapInsertObjs)
-	$(EXE)/./TreapInsert
+SplayTest: $(SplayTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/SplayTest $(SplayTestObjs)
+	$(EXE)/./SplayTest
 
-$(OBJ)/TreapInsert.o: $(SRC)/TreapInsert.cpp $(INC)/Treap2.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/TreapInsert.cpp -o $@
-
-
-# Command: make InsertRandom
-# Tests the Treap Insert Results
-InsertRandomObjs := $(OBJ)/InsertRandom.o 
-
-InsertRandom: $(InsertRandomObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/InsertRandom $(InsertRandomObjs)
-	$(EXE)/./InsertRandom
-
-$(OBJ)/InsertRandom.o: $(SRC)/InsertRandom.cpp $(INC)/Treap3.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/InsertRandom.cpp -o $@
-	
-	
-# Command: make InsertRandom2
-# Tests height for 100 versions of 100 inserts
-InsertRandom2Objs := $(OBJ)/InsertRandom2.o 
-
-InsertRandom2: $(InsertRandom2Objs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/InsertRandom2 $(InsertRandom2Objs)
-	$(EXE)/./InsertRandom2
-
-$(OBJ)/InsertRandom2.o: $(SRC)/InsertRandom2.cpp $(INC)/Treap4.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/InsertRandom2.cpp -o $@
-	
-	
-# Command: make TreapTest
-# Tests the Treap Insert Results
-TreapTestObjs := $(OBJ)/TreapTest.o 
-
-TreapTest: $(TreapTestObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/TreapTest $(TreapTestObjs)
-	$(EXE)/./TreapTest
-
-$(OBJ)/TreapTest.o: $(SRC)/TreapTest.cpp $(INC)/Treap.h
-	$(PP) $(CXXFLAGS) -c $(SRC)/TreapTest.cpp -o $@
+$(OBJ)/SplayTest.o: $(SRC)/SplayTest.cpp $(INC)/SplayTree.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/SplayTest.cpp -o $@
 
 
-# Initialize 
-initialize:
-	mkdir $(OBJ) $(EXE)
+
+# Command: make CacheExample
+# Shows a SplayTree accessing memory locations
+CacheExampleObjs := $(OBJ)/CacheExample.o
+
+CacheExample: $(CacheExampleObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/CacheExample $(CacheExampleObjs)
+	$(EXE)/./CacheExample
+
+$(OBJ)/CacheExample.o: $(SRC)/CacheExample.cpp $(INC)/SplayTree.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/CacheExample.cpp -o $@
+
+
 
 # Make all
-all: SubsetSums BloomURL
+all: SplayTest
+
 
 # Make clean
 clean :
 	rm -rf *.o $(OBJ)/* $(EXE)/*
+	
+	
+# Make gitPre
+gitPre:
+	make clean
+	git add Makefile $(INC)/* $(SRC)/*
+	git commit -m "Lecture 24 Preview Assignment"
+	git push
+
+	
+# Make gitIn
+gitIn:
+	make clean
+	git add Makefile $(INC)/* $(SRC)/*
+	git commit -m "Lecture 24 In Class"
+	git push
+	
+	
+# Make gitIn
+gitFix:
+	make clean
+	git add --all
+	git commit -m "Lecture 24 In Class - Fix"
+	git push

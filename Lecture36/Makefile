@@ -1,4 +1,4 @@
-# This is the Makefile for the CSE 20312 course - Lecture 36
+# This is the Makefile for the CSE 24312 course - Lecture 15 - Part 2
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -15,36 +15,88 @@ OBJ := obj
 
 
 	
-# Command: make SubsetSums
-# Initial Examples of bitsets using Subset Sum problem
-SubsetSumsObjs := $(OBJ)/SubsetSums.o 
+# Command: make TrieNodeTest
+# Initial Examples of Trie Node
+TrieNodeTestObjs := $(OBJ)/TrieNodeTest.o 
 
-SubsetSums: $(SubsetSumsObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/SubsetSums $(SubsetSumsObjs)
-	$(EXE)/./SubsetSums
+TrieNodeTest: $(TrieNodeTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/TrieNodeTest $(TrieNodeTestObjs)
+	$(EXE)/./TrieNodeTest
 
-$(OBJ)/SubsetSums.o: $(SRC)/SubsetSums.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/SubsetSums.cpp -o $@
+$(OBJ)/TrieNodeTest.o: $(SRC)/TrieNodeTest.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/TrieNodeTest.cpp -o $@
 
 
-# Command: make BloomURL
-# Initial Examples of Bloom Filter
-BloomURLObjs := $(OBJ)/BloomURL.o 
 
-BloomURL: $(BloomURLObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/BloomURL $(BloomURLObjs)
-	$(EXE)/./BloomURL $(SRC)/Access_URLs.txt $(SRC)/NDCSE_URLs.txt
+# Command: make TrieTest
+# Initial Examples of Trie Node
+TrieTestObjs := $(OBJ)/TrieTest.o 
 
-$(OBJ)/BloomURL.o: $(SRC)/BloomURL.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/BloomURL.cpp -o $@
+TrieTest: $(TrieTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/TrieTest $(TrieTestObjs)
+	$(EXE)/./TrieTest
 
-# Initialize 
-initialize:
-	mkdir $(OBJ) $(EXE)
+$(OBJ)/TrieTest.o: $(SRC)/TrieTest.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/TrieTest.cpp -o $@
+
+
+
+# Command: make WordBreak
+WordBreakObjs := $(OBJ)/WordBreak.o 
+
+WordBreak: $(WordBreakObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/WordBreak $(WordBreakObjs)
+	$(EXE)/./WordBreak $(SRC)/Dictionary.txt
+
+$(OBJ)/WordBreak.o: $(SRC)/WordBreak.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/WordBreak.cpp -o $@
+
+
+# Command: make testDynArr
+testDynArrObjs := $(OBJ)/testDynArr.o 
+
+testDynArr: $(testDynArrObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testDynArr $(testDynArrObjs)
+	$(EXE)/./testDynArr
+
+$(OBJ)/testDynArr.o: $(SRC)/testDynArr.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/testDynArr.cpp -o $@
+
 
 # Make all
-all: SubsetSums BloomURL
+all: TrieNodeTest TrieTest WordBreak
+
+
+# make initialize
+# Will be called by grader to initialize your objects and executables folders
+initialize: 
+	mkdir objects executables
+
 
 # Make clean
 clean :
 	rm -rf *.o $(OBJ)/* $(EXE)/*
+	
+	
+# Make gitPre
+gitPre:
+	make clean
+	git add Makefile $(SRC)/*
+	git commit -m "Lecture 37 Preview Assignment"
+	git push
+
+	
+# Make gitIn
+gitIn:
+	make clean
+	git add Makefile $(SRC)/*
+	git commit -m "Lecture 37 In Class"
+	git push
+	
+	
+# Make gitIn
+gitFix:
+	make clean
+	git add --all
+	git commit -m "Lecture 37 In Class - Fix"
+	git push
