@@ -46,7 +46,6 @@ bool checkCode(VECTOR< STRING >& codeVector){
 						tempStack.pop();
 					}
 					else{
-						COUT << '}' << ENDL;
 						return false;
 					}
 					break;

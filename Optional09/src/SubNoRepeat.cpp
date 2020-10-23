@@ -7,9 +7,7 @@
 
 int getLongestNonRepeat( const std::string& testString ){
 	
-	int current = 0;
-	int maximum = 0;
-	
+	int current = 0;	int maximum = 0;
 	std::unordered_map< char, int > charHash;
 	
 	for( int iter = (int)testString.size() - 1; iter >= 0; iter-- ){
@@ -17,22 +15,18 @@ int getLongestNonRepeat( const std::string& testString ){
 		if( charHash.count( testString.at(iter) ) == 0 ){
 			
 			charHash.insert( { testString.at(iter), iter } );
-			
 			current++;
 		}
 		else{
+			current++;
 			
-			current = charHash[ testString.at(iter) ] - iter;
+			current = ( current < charHash[ testString.at(iter) ] - iter ) ? current : charHash[ testString.at(iter) ] - iter;
 			
 			charHash[ testString.at(iter) ] = iter;
 		}
 		
-		if( current > maximum ){
-			
-			maximum = current;
-		}
+		maximum = ( current > maximum ) ? current : maximum;
 	}
-	
 	return maximum;
 }
 
@@ -50,8 +44,9 @@ int main() {
 	runAlgorithm( "abcabcbb" );
 	runAlgorithm( "bbbbb" );
 	runAlgorithm( "pwwkew" );
-	runAlgorithm( "pwwkew" );
-	runAlgorithm( "pwwkew" );
+	runAlgorithm( "bacadaelmnofghijaka" );
+	runAlgorithm( "hgklcyvlstwhjhighssw" );
+	runAlgorithm( "umwoleylehugrayqoz" );
 	
 	return 0;
 }
