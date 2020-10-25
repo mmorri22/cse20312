@@ -1,4 +1,4 @@
-# This is the Makefile for the CSE 24312 course - Lecture 15 - Part 2
+# This is the Makefile for the CSE 20312 course - Lecture 38
 
 # G++ is for the GCC compiler for C++
 PP := g++
@@ -15,88 +15,49 @@ OBJ := obj
 
 
 	
-# Command: make TrieNodeTest
-# Initial Examples of Trie Node
-TrieNodeTestObjs := $(OBJ)/TrieNodeTest.o 
+# Command: make testBH
+# Tests the Treap Insert Results
+testBHObjs := $(OBJ)/testBH.o 
 
-TrieNodeTest: $(TrieNodeTestObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/TrieNodeTest $(TrieNodeTestObjs)
-	$(EXE)/./TrieNodeTest
+testBH: $(testBHObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testBH $(testBHObjs)
+	$(EXE)/./testBH
 
-$(OBJ)/TrieNodeTest.o: $(SRC)/TrieNodeTest.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/TrieNodeTest.cpp -o $@
-
-
-
-# Command: make TrieTest
-# Initial Examples of Trie Node
-TrieTestObjs := $(OBJ)/TrieTest.o 
-
-TrieTest: $(TrieTestObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/TrieTest $(TrieTestObjs)
-	$(EXE)/./TrieTest
-
-$(OBJ)/TrieTest.o: $(SRC)/TrieTest.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/TrieTest.cpp -o $@
+$(OBJ)/testBH.o: $(SRC)/testBH.cpp $(INC)/BinomialHeap.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testBH.cpp -o $@
 
 
 
-# Command: make WordBreak
-WordBreakObjs := $(OBJ)/WordBreak.o 
+# Command: make testPQ
+# Tests the Treap Insert Results
+testPQObjs := $(OBJ)/testPQ.o 
 
-WordBreak: $(WordBreakObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/WordBreak $(WordBreakObjs)
-	$(EXE)/./WordBreak $(SRC)/Dictionary.txt
+testPQ: $(testPQObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/testPQ $(testPQObjs)
+	$(EXE)/./testPQ
 
-$(OBJ)/WordBreak.o: $(SRC)/WordBreak.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/WordBreak.cpp -o $@
+$(OBJ)/testPQ.o: $(SRC)/testPQ.cpp $(INC)/PriorityQueue.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/testPQ.cpp -o $@
 
 
-# Command: make testDynArr
-testDynArrObjs := $(OBJ)/testDynArr.o 
+# Command: make PriorityTest
+# Tests the Treap Insert Results
+PriorityTestObjs := $(OBJ)/PriorityTest.o 
 
-testDynArr: $(testDynArrObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testDynArr $(testDynArrObjs)
-	$(EXE)/./testDynArr
+PriorityTest: $(PriorityTestObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/PriorityTest $(PriorityTestObjs)
+	$(EXE)/./PriorityTest
 
-$(OBJ)/testDynArr.o: $(SRC)/testDynArr.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/testDynArr.cpp -o $@
+$(OBJ)/PriorityTest.o: $(SRC)/PriorityTest.cpp $(INC)/PriorityQueue.h
+	$(PP) $(CXXFLAGS) -c $(SRC)/PriorityTest.cpp -o $@
 
+# Initialize 
+initialize:
+	mkdir $(OBJ) $(EXE)
 
 # Make all
-all: TrieNodeTest TrieTest WordBreak
-
-
-# make initialize
-# Will be called by grader to initialize your objects and executables folders
-initialize: 
-	mkdir objects executables
-
+all: testPQ testBH
 
 # Make clean
 clean :
 	rm -rf *.o $(OBJ)/* $(EXE)/*
-	
-	
-# Make gitPre
-gitPre:
-	make clean
-	git add Makefile $(SRC)/*
-	git commit -m "Lecture 37 Preview Assignment"
-	git push
-
-	
-# Make gitIn
-gitIn:
-	make clean
-	git add Makefile $(SRC)/*
-	git commit -m "Lecture 37 In Class"
-	git push
-	
-	
-# Make gitIn
-gitFix:
-	make clean
-	git add --all
-	git commit -m "Lecture 37 In Class - Fix"
-	git push
