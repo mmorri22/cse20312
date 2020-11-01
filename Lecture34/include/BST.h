@@ -355,6 +355,12 @@ class BST{
 			
 		}
 		
+		T returnRootVal(){
+			
+			return root->data;
+			
+		}
+		
 		// Public findMin method
 		BSTNode<T>* findMin(){
 			
@@ -384,6 +390,30 @@ class BST{
 			
 			// Pass the root to the private recursive method
 			return maxHeight( root );
+			
+		}
+		
+		void printPreOrder( std::ostream& output ) const{
+			
+			printPreOrder( output, root );
+			
+		}
+
+		void printLevelOrder( std::ostream& output ) const{
+			
+			printLevelOrder( output, root );
+			
+		}
+		
+		void printInOrder( std::ostream& output ) const{
+			
+			printInOrder( output, root );
+			
+		}
+		
+		void printPostOrder( std::ostream& output ) const{
+			
+			printPostOrder( output, root );
 			
 		}
 		

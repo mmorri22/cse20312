@@ -27,33 +27,6 @@ $(OBJ)/SubsetSums.o: $(SRC)/SubsetSums.cpp
 	$(PP) $(CXXFLAGS) -c $(SRC)/SubsetSums.cpp -o $@
 
 
-
-# Command: make HammingDist
-# Calculate the Hamming Distance of an unsigned integer
-HammingDistObjs := $(OBJ)/HammingDist.o 
-
-HammingDist: $(HammingDistObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/HammingDist $(HammingDistObjs)
-	$(EXE)/./HammingDist
-
-$(OBJ)/HammingDist.o: $(SRC)/HammingDist.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/HammingDist.cpp -o $@
-
-
-
-# Command: make Reverse Dist
-# Reverses the Bits of an unsigned int
-ReverseBitsObjs := $(OBJ)/ReverseBits.o 
-
-ReverseBits: $(ReverseBitsObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/ReverseBits $(ReverseBitsObjs)
-	$(EXE)/./ReverseBits
-
-$(OBJ)/ReverseBits.o: $(SRC)/ReverseBits.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/ReverseBits.cpp -o $@
-	
-	
-
 # Command: make BloomURL
 # Initial Examples of Bloom Filter
 BloomURLObjs := $(OBJ)/BloomURL.o 
@@ -70,7 +43,7 @@ initialize:
 	mkdir $(OBJ) $(EXE)
 
 # Make all
-all: SubsetSums ReverseBits HammingDist BloomURL
+all: SubsetSums BloomURL
 
 # Make clean
 clean :

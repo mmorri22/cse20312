@@ -54,17 +54,6 @@ int main(){
 	checkContains(theTree,6);
 	
 	deleteSplay(theTree, 10);
-
-	
-	//SplayTree<std::string> NDSong;
-	//NDSong.Insert("Send");
-	//NDSong.Insert("A");
-	//NDSong.Insert("Volley");
-	//NDSong.Insert("Cheer");
-	//NDSong.Insert("On");
-	//NDSong.Insert("High");
-	
-	//COUT << NDSong << ENDL;
 	
 	return 0;
 }

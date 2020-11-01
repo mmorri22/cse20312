@@ -32,10 +32,7 @@ int main(){
 	printSplayRoot( cacheSplay );
 	
 	std::cout << "-------------" << std::endl;
-	cacheSplay.printInOrder( std::cout );
-	std::cout << "-------------" << std::endl;
-	cacheSplay.printPreOrder( std::cout );
-
+	std::cout << cacheSplay << std::endl;
 	
 	for(unsigned int i = 0; i < 10; i++){
 	

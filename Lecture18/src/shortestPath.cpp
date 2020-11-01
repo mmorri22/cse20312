@@ -70,7 +70,7 @@ void BFS(int matrix[][N], int orig_x, int orig_y, int dest_x, int dest_y)
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 	}; 	
 	
 	queue< SearchNode > theQueue;

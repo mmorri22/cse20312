@@ -52,19 +52,19 @@ $(OBJ)/WordBreak.o: $(SRC)/WordBreak.cpp
 	$(PP) $(CXXFLAGS) -c $(SRC)/WordBreak.cpp -o $@
 
 
-# Command: make testDynArr
-testDynArrObjs := $(OBJ)/testDynArr.o 
+# Command: make WordSearch
+WordSearchObjs := $(OBJ)/WordSearch.o 
 
-testDynArr: $(testDynArrObjs)
-	$(PP) $(CXXFLAGS) -o $(EXE)/testDynArr $(testDynArrObjs)
-	$(EXE)/./testDynArr
+WordSearch: $(WordSearchObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/WordSearch $(WordSearchObjs)
+	$(EXE)/./WordSearch $(SRC)/Dictionary.txt
 
-$(OBJ)/testDynArr.o: $(SRC)/testDynArr.cpp
-	$(PP) $(CXXFLAGS) -c $(SRC)/testDynArr.cpp -o $@
+$(OBJ)/WordSearch.o: $(SRC)/WordSearch.cpp
+	$(PP) $(CXXFLAGS) -c $(SRC)/WordSearch.cpp -o $@
 
 
 # Make all
-all: TrieNodeTest TrieTest WordBreak
+all: TrieNodeTest TrieTest WordBreak WordSearch
 
 
 # make initialize
@@ -76,27 +76,6 @@ initialize:
 # Make clean
 clean :
 	rm -rf *.o $(OBJ)/* $(EXE)/*
-	
-	
-# Make gitPre
-gitPre:
-	make clean
-	git add Makefile $(SRC)/*
-	git commit -m "Lecture 37 Preview Assignment"
-	git push
 
 	
-# Make gitIn
-gitIn:
-	make clean
-	git add Makefile $(SRC)/*
-	git commit -m "Lecture 37 In Class"
-	git push
-	
-	
-# Make gitIn
-gitFix:
-	make clean
-	git add --all
-	git commit -m "Lecture 37 In Class - Fix"
-	git push
+
