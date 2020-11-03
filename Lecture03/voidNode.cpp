@@ -25,11 +25,11 @@ void setNodeValues( void* reference, double theDbl, float theFlt, int theInt ){
 	*((double *)(reference)) = theDbl;
 	
 	// Move past 64 bits and put in a float 
-	reference += sizeof(double);
+	reference = (void *) ( (double *)reference + sizeof(double) );
 	*((float *)(reference)) = theFlt;
 	
 	// Move past 32 bits and put in an integer
-	reference += sizeof(float);
+	reference = (void *) ( (float *)reference + sizeof(float) );
 	*((int *)(reference)) = theInt;	
 	
 }
@@ -40,12 +40,15 @@ void printNodeValues( void* reference ){
 	COUT << "-----------------------------" << ENDL;
 	COUT << "Initial address of reference: " << reference << ENDL << ENDL;	
 	
+	// Print the double
 	COUT << "Double:  " << *((double *)(reference)) << "\t at address " << reference << ENDL;
 	
-	reference += sizeof(double);
+	// Print the float
+	reference = (void *) ( (double *)reference + sizeof(double) );
 	COUT << "Float:   " << *((float *)(reference)) << "\t at address " << reference << ENDL;
 	
-	reference += sizeof(int);
+	// Print the integer
+	reference = (void *) ( (float *)reference + sizeof(float) );
 	COUT << "Integer: " << *((int *)(reference)) << "\t at address " << reference << ENDL;
 	
 	COUT << ENDL;
@@ -61,10 +64,10 @@ int main(void){
 	void* node2 = malloc( nodeSize );
 	
 	// Set the node Values for node1 
-	setNodeValues( node1, -0.625, 1.5625, 131 );
+	setNodeValues( node1, -0.625, (float)1.5625, 131 );
 	
 	// Set the node Values for node2 
-	setNodeValues( node2, -34.77, 44.96, 1842 );
+	setNodeValues( node2, -34.77, (float)44.96, 1842 );
 	
 	// Printing the values. Set the reference back to numbers
 	printNodeValues( node1 );

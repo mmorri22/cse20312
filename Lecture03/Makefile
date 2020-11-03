@@ -8,7 +8,7 @@ PP := g++
 
 # CFLAGS are the compiler flages for when we compile C code in this course
 FLAGS := -O0 -g -Wall
-CXXFLAGS := -m64 -std=c++11 $(FLAGS)
+CXXFLAGS := -m64 -std=c++11 $(PQCFLAGS)
 PQCFLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm
 PQCXX    := -m64 -std=c++11 -Weffc++ $(PQCFLAGS)
 
@@ -19,11 +19,11 @@ PQCXX    := -m64 -std=c++11 -Weffc++ $(PQCFLAGS)
 voidTypesObjs :=  voidTypes.o
 
 voidTypes: voidTypes.o
-	$(PP) $(CXXFLAGS) -o voidTypes $(voidTypesObjs)
+	$(PP) $(PQCXX) -o voidTypes $(voidTypesObjs)
 	./voidTypes
 
 voidTypes.o: voidTypes.cpp
-	$(PP) $(CXXFLAGS) -c voidTypes.cpp
+	$(PP) $(PQCXX) -c voidTypes.cpp
 
 
 # voidTypes2 Example
@@ -31,11 +31,11 @@ voidTypes.o: voidTypes.cpp
 voidTypes2Objs :=  voidTypes2.o
 
 voidTypes2: voidTypes2.o
-	$(PP) $(CXXFLAGS) -o voidTypes2 $(voidTypes2Objs)
+	$(PP) $(PQCXX) -o voidTypes2 $(voidTypes2Objs)
 	./voidTypes2
 
 voidTypes2.o: voidTypes2.cpp
-	$(PP) $(CXXFLAGS) -c voidTypes2.cpp
+	$(PP) $(PQCXX) -c voidTypes2.cpp
 
 
 
@@ -44,11 +44,11 @@ voidTypes2.o: voidTypes2.cpp
 voidTypes3Objs :=  voidTypes3.o
 
 voidTypes3: voidTypes3.o
-	$(PP) $(CXXFLAGS) -o voidTypes3 $(voidTypes3Objs)
+	$(PP) $(PQCXX) -o voidTypes3 $(voidTypes3Objs)
 	./voidTypes3
 
 voidTypes3.o: voidTypes3.cpp
-	$(PP) $(CXXFLAGS) -c voidTypes3.cpp
+	$(PP) $(PQCXX) -c voidTypes3.cpp
 	
 	
 
@@ -57,11 +57,11 @@ voidTypes3.o: voidTypes3.cpp
 voidNodeObjs :=  voidNode.o
 
 voidNode: voidNode.o
-	$(PP) $(CXXFLAGS) -o voidNode $(voidNodeObjs)
+	$(PP) $(PQCXX) -o voidNode $(voidNodeObjs)
 	./voidNode
 
 voidNode.o: voidNode.cpp
-	$(PP) $(CXXFLAGS) -c voidNode.cpp
+	$(PP) $(PQCXX) -c voidNode.cpp
 	
 	
 	
@@ -70,11 +70,11 @@ voidNode.o: voidNode.cpp
 voidNodeBadObjs :=  voidNodeBad.o
 
 voidNodeBad: voidNodeBad.o
-	$(PP) $(CXXFLAGS) -o voidNodeBad $(voidNodeBadObjs)
+	$(PP) $(PQCXX) -o voidNodeBad $(voidNodeBadObjs)
 	./voidNodeBad
 
 voidNodeBad.o: voidNodeBad.cpp
-	$(PP) $(CXXFLAGS) -c voidNodeBad.cpp
+	$(PP) $(PQCXX) -c voidNodeBad.cpp
 
 
 
@@ -83,11 +83,11 @@ voidNodeBad.o: voidNodeBad.cpp
 voidNodeBad2Objs :=  voidNodeBad2.o
 
 voidNodeBad2: voidNodeBad2.o
-	$(PP) $(CXXFLAGS) -o voidNodeBad2 $(voidNodeBad2Objs)
+	$(PP) $(PQCXX) -o voidNodeBad2 $(voidNodeBad2Objs)
 	./voidNodeBad2
 
 voidNodeBad2.o: voidNodeBad2.cpp
-	$(PP) $(CXXFLAGS) -c voidNodeBad2.cpp
+	$(PP) $(PQCXX) -c voidNodeBad2.cpp
 	
 
 
@@ -96,11 +96,11 @@ voidNodeBad2.o: voidNodeBad2.cpp
 structNodeObjs :=  structNode.o
 
 structNode: structNode.o
-	$(PP) $(CXXFLAGS) -o structNode $(structNodeObjs)
+	$(PP) $(PQCXX) -o structNode $(structNodeObjs)
 	./structNode
 
 structNode.o: structNode.cpp
-	$(PP) $(CXXFLAGS) -c structNode.cpp
+	$(PP) $(PQCXX) -c structNode.cpp
 
 
 # structSimple Example
@@ -108,11 +108,11 @@ structNode.o: structNode.cpp
 structSimpleObjs :=  structSimple.o
 
 structSimple: structSimple.o
-	$(PP) $(CXXFLAGS) -o structSimple $(structSimpleObjs)
+	$(PP) $(PQCXX) -o structSimple $(structSimpleObjs)
 	./structSimple
 
 structSimple.o: structSimple.cpp
-	$(PP) $(CXXFLAGS) -c structSimple.cpp
+	$(PP) $(PQCXX) -c structSimple.cpp
 
 
 # structSimple2 Example
@@ -120,11 +120,11 @@ structSimple.o: structSimple.cpp
 structSimple2Objs :=  structSimple2.o
 
 structSimple2: structSimple2.o
-	$(PP) $(CXXFLAGS) -o structSimple2 $(structSimple2Objs)
+	$(PP) $(PQCXX) -o structSimple2 $(structSimple2Objs)
 	./structSimple
 
 structSimple2.o: structSimple2.cpp
-	$(PP) $(CXXFLAGS) -c structSimple2.cpp	
+	$(PP) $(PQCXX) -c structSimple2.cpp	
 
 	
 # structMod Example
@@ -132,11 +132,11 @@ structSimple2.o: structSimple2.cpp
 structModObjs :=  structMod.o
 
 structMod: structMod.o
-	$(PP) $(CXXFLAGS) -o structMod $(structModObjs)
+	$(PP) $(PQCXX) -o structMod $(structModObjs)
 	./structMod
 
 structMod.o: structMod.cpp
-	$(PP) $(CXXFLAGS) -c structMod.cpp
+	$(PP) $(PQCXX) -c structMod.cpp
 
 
 # classNode Example
@@ -144,11 +144,11 @@ structMod.o: structMod.cpp
 classNodeObjs :=  classNode.o
 
 classNode: classNode.o
-	$(PP) $(CXXFLAGS) -o classNode $(classNodeObjs)
+	$(PP) $(PQCXX) -o classNode $(classNodeObjs)
 	./classNode
 
 classNode.o: classNode.cpp
-	$(PP) $(CXXFLAGS) -c classNode.cpp
+	$(PP) $(PQCXX) -c classNode.cpp
 	
 	
 # classMod Example
@@ -156,11 +156,11 @@ classNode.o: classNode.cpp
 classModObjs :=  classMod.o
 
 classMod: classMod.o
-	$(PP) $(CXXFLAGS) -o classMod $(classModObjs)
+	$(PP) $(PQCXX) -o classMod $(classModObjs)
 	./classMod
 
 classMod.o: classMod.cpp
-	$(PP) $(CXXFLAGS) -c classMod.cpp
+	$(PP) $(PQCXX) -c classMod.cpp
 	
 	
 # classBad Example
@@ -168,11 +168,11 @@ classMod.o: classMod.cpp
 classBadObjs :=  classBad.o
 
 classBad: classBad.o
-	$(PP) $(CXXFLAGS) -o classBad $(classBadObjs)
+	$(PP) $(PQCXX) -o classBad $(classBadObjs)
 	./classBad
 
 classBad.o: classBad.cpp
-	$(PP) $(CXXFLAGS) -c classBad.cpp
+	$(PP) $(PQCXX) -c classBad.cpp
 	
 	
 	

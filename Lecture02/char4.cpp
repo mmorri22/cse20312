@@ -13,13 +13,6 @@
 #include <iostream>
 #include <cstdlib>
 
-/********************************************
-* Function Name  : main
-* Pre-conditions : void
-* Post-conditions: int
-* 
-* This is the main driver function for the program 
-********************************************/
 int main(void){
 	
 	long unsigned int numCharacters = 13;
@@ -44,13 +37,10 @@ int main(void){
 	for(long unsigned int iter = 0; iter < numCharacters; iter++){
 		
 		std::cout << (void *)reference << " " << *(reference) << std::endl;
-		
 		reference = reference + 1;
-		
 	}
 	
 	free( hello );
-	free( reference );
 
 	return 0;
 }

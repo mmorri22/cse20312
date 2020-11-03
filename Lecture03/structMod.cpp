@@ -45,7 +45,7 @@ struct Node{
 
 int main(void){
 	
-	Node node1( -0.625, 1.5625, 131 );
+	Node node1( -0.625, (float)1.5625, 131 );
 	
 	node1.printNodeValues();
 	

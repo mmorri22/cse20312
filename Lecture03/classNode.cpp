@@ -45,8 +45,8 @@ class Node{
 
 int main(void){
 	
-	Node node1( -0.625, 1.5625, 131 );
-	Node node2( -34.77, 44.96, 1842 );
+	Node node1( -0.625, (float)1.5625, 131 );
+	Node node2( -34.77, (float)44.96, 1842 );
 	
 	COUT << "Node 1 is at address " << &node1 << ENDL;
 	

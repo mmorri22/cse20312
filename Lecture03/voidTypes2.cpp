@@ -24,7 +24,7 @@ int main(void){
 	*((double *)(reference)) = -0.625;
 	
 	// Move past 64 bits and put in a float 
-	reference += sizeof(double);
+	reference = (void *) ( (double *)reference + sizeof(double) );
 	*((float *)(reference)) = 1.5625;
 	
 	// Printing the values. Set the reference back to numbers
@@ -32,7 +32,7 @@ int main(void){
 	
 	COUT << "Double:  " << *((double *)(reference)) << "\t at address " << reference << ENDL;
 	
-	reference += sizeof(double);
+	reference = (void *) ( (double *)reference + sizeof(double) );
 	COUT << "Float:   " << *((float *)(reference)) << "\t at address " << reference << ENDL;
 	
 	COUT << ENDL;

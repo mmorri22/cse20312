@@ -7,8 +7,8 @@
 PP := g++
 
 # CFLAGS are the compiler flages for when we compile C code in this course
-FLAGS := -O0 -g -Wall
-CXXFLAGS := -m64 -std=c++11 $(FLAGS)
+FLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror -lm
+CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
 
 # C++ intPtr Example
 # Command: make intPtr

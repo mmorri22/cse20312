@@ -27,8 +27,8 @@ int main(void){
 	void* hello = malloc( numCharacters * sizeof(char) );
 	void* reference = hello;
 	
-	*((char *)(reference)) = ;
-	reference = reference + sizeof(char);
+	*((char *)(reference)) = 72;
+	reference = (void *) ((char *)reference + sizeof(char));
 	*((char *)(reference)) = 101;
 	
 	std::cout << &hello << " " << hello << " " << *((char *)(hello)) <<std::endl;
