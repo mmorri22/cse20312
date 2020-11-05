@@ -50,7 +50,7 @@ int main(void){
 	node1.printNodeValues();
 	
 	node1.theDbl = -34.77;
-	node1.theFloat = 44.96;
+	node1.theFloat = (float)44.96;
 	node1.theInt = 1842;
 	
 	node1.printNodeValues();

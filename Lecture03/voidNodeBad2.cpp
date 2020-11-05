@@ -21,6 +21,7 @@
 #define COUT std::cout
 #define ENDL std::endl
 
+// Logically Correct, but inefficient implementation of set node values
 void setNodeValues( void* reference, double theDbl, float theFlt, int theInt ){
 	
 	// Skip to the int first 
